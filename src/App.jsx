@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <div className="app" id="vanta-bg">
       <Navbar />
       <Profile />
       <About />
@@ -16,7 +16,7 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 }
 

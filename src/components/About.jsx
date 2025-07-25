@@ -34,17 +34,19 @@ const About = () => (
             />
             <h3>Education</h3>
             <p>
-              B.S. Engineering Physics
+              B.S. Engineering Physics | Fordham University
               <br />
-              B.S. Computer Science
+              B.S. Computer Science | Columbia University
             </p>
           </div>
         </div>
         <div className="text-container">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-            reprehenderit et laborum, rem, dolore eum quod voluptate
-            exercitationem nobis...
+            I am a Computer Science student at Columbia University, with a
+            strong interest in software development and cybersecurity.
+            Proficient in Python, C++, Java, JavaScript, Node.js, and React, I
+            enjoy building efficient web applications and exploring machine
+            learning and AI advancements.
           </p>
         </div>
       </div>

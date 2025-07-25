@@ -24,7 +24,7 @@ const Contact = () => (
           className="icon contact-icon"
         />
         <p>
-          <a href="https://www.linkedin.com/in/rohitbiswas3/">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/rohitbiswas3/">rohitbiswas3</a>
         </p>
       </div>
     </div>
