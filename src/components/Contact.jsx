@@ -12,7 +12,9 @@ const Contact = () => (
           className="icon contact-icon email-icon"
         />
         <p>
-          <a href="mailto:examplemail@gmail.com">Example@gmail.com</a>
+          <a href="mailto:info.biswasrohit@gmail.com">
+            info.biswasrohit@gmail.com
+          </a>
         </p>
       </div>
       <div className="contact-info-container">
@@ -22,7 +24,7 @@ const Contact = () => (
           className="icon contact-icon"
         />
         <p>
-          <a href="https://www.linkedin.com">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/rohitbiswas3/">LinkedIn</a>
         </p>
       </div>
     </div>

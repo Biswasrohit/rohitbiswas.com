@@ -22,8 +22,8 @@ const About = () => (
             />
             <h3>Experience</h3>
             <p>
-              2+ years <br />
-              Frontend Development
+              3+ years <br />
+              Software Development
             </p>
           </div>
           <div className="details-container">
@@ -34,9 +34,9 @@ const About = () => (
             />
             <h3>Education</h3>
             <p>
-              B.Sc. Bachelors Degree
+              B.S. Engineering Physics
               <br />
-              M.Sc. Masters Degree
+              B.S. Computer Science
             </p>
           </div>
         </div>

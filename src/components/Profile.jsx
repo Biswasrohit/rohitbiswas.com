@@ -3,18 +3,18 @@ import React from "react";
 const Profile = () => (
   <section id="profile">
     <div className="section__pic-container">
-      <img src="/assets/profile-pic.png" alt="John Doe profile picture" />
+      <img src="/assets/profile-pic.png" alt="Rohit Biswas profile picture" />
     </div>
     <div className="section__text">
       <p className="section__text__p1">Hello, I'm</p>
-      <h1 className="title">John Doe</h1>
-      <p className="section__text__p2">Frontend Developer</p>
+      <h1 className="title">Rohit Biswas</h1>
+      <p className="section__text__p2">Software Developer</p>
       <div className="btn-container">
         <button
           className="btn btn-color-2"
           onClick={() => window.open("/assets/resume-example.pdf")}
         >
-          Download CV
+          Download Resume
         </button>
         <button
           className="btn btn-color-1"

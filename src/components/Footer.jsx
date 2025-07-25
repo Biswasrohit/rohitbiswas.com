@@ -20,7 +20,7 @@ const Footer = () => (
         </ul>
       </div>
     </nav>
-    <p>Copyright © 2023 John Doe. All Rights Reserved.</p>
+    <p>Copyright © 2025 Rohit Biswas. All Rights Reserved.</p>
   </footer>
 );
 

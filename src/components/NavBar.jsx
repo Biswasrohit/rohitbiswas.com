@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <nav id="desktop-nav">
-        <div className="logo">John Doe</div>
+        <div className="logo">Rohit Biswas</div>
         <div>
           <ul className="nav-links">
             <li>
@@ -28,7 +28,7 @@ const Navbar = () => {
         </div>
       </nav>
       <nav id="hamburger-nav">
-        <div className="logo">John Doe</div>
+        <div className="logo">Rohit Biswas</div>
         <div className="hamburger-menu">
           <div
             className={`hamburger-icon ${menuOpen ? "open" : ""}`}
