@@ -1,12 +1,62 @@
-# React + Vite
+# Rohit Biswas — Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the source code for my personal website! This repository contains all the code and content for [rohitbiswas.com](https://rohitbiswas.com).
 
-Currently, two official plugins are available:
+## About Me
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Hi, I'm Rohit Biswas, a passionate developer, technologist, and lifelong learner. This website serves as my digital home, portfolio, and blog where I share my projects, thoughts, and experiences in software development and technology.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Personal and professional bio
+- Projects portfolio
+- Blog posts and articles
+- Contact information
+
+## Technologies Used
+
+- [Add your stack here, e.g., Next.js, React, TypeScript, Tailwind CSS, Vercel, etc.]
+- [List any other relevant tools, frameworks, or libraries]
+
+## Getting Started
+
+To run this project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/Biswasrohit/rohitbiswas.com.git
+
+# Navigate into the directory
+cd rohitbiswas.com
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to view the site locally.
+
+## Project Structure
+
+```
+.
+├── public/             # Static assets
+├── src/                # Source code (components, pages, etc.)
+├── styles/             # CSS or styling files
+├── README.md
+└── ...
+```
+
+## Contributing
+
+While this is primarily a personal website, suggestions and improvements are welcome! Feel free to open an issue or submit a pull request.
+
+## License
+
+[Specify your license here, e.g., MIT]
+
+---
+
+Thank you for visiting my site and checking out the code!
