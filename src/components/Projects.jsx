@@ -1,9 +1,9 @@
 import React from "react";
 
 const projects = [
-  { title: "R2D3", img: "/assets/r2d3.png" },
-  { title: "HobbyHub", img: "/assets/hobbyhub.png" },
-  { title: "Crewmate Creator", img: "/assets/crewmatecreator.png" },
+  { title: "R2D3", img: "/assets/r2d3.jpg" },
+  { title: "HobbyHub", img: "/assets/hobbyhub.jpg" },
+  { title: "Crewmate Creator", img: "/assets/crewmatecreator.jpg" },
 ];
 
 const Projects = () => (
