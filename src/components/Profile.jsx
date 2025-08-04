@@ -56,13 +56,15 @@ const Profile = () => {
             src="/assets/linkedin.png"
             alt="My LinkedIn profile"
             className="icon"
-            onClick={() => (location.href = "https://linkedin.com/")}
+            onClick={() =>
+              (location.href = "https://www.linkedin.com/in/rohitbiswas3/")
+            }
           />
           <img
             src="/assets/github.png"
             alt="My Github profile"
             className="icon"
-            onClick={() => (location.href = "https://github.com/")}
+            onClick={() => (location.href = "https://github.com/Biswasrohit")}
           />
         </div>
       </div>
