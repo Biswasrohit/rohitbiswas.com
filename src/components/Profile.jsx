@@ -40,7 +40,7 @@ const Profile = () => {
         <div className="btn-container">
           <button
             className="btn btn-color-2"
-            onClick={() => window.open("/assets/resume-example.pdf")}
+            onClick={() => window.open("/assets/resume.pdf")}
           >
             Download Resume
           </button>
