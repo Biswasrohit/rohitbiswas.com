@@ -2,6 +2,8 @@
 
 Welcome to the source code for my personal website! This repository contains all the code and content for [rohitbiswas.com](https://rohitbiswas.com).
 
+![Home Page](./public/assets/home-page.png)
+
 ## About Me
 
 Hi, I'm Rohit Biswas, a passionate developer, technologist, and lifelong learner. This website serves as my digital home, portfolio, and blog where I share my projects, thoughts, and experiences in software development and technology.
