@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import Profile from "./components/Profile";
 import About from "./components/About";
@@ -10,11 +11,20 @@ function App() {
   return (
     <>
       <Navbar />
-      <Profile />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Profile />
+              <Contact />
+            </>
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/projects" element={<Projects />} />
+      </Routes>
       <Footer />
     </>
   );
