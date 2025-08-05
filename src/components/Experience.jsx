@@ -1,3 +1,4 @@
+// src/components/Experience.jsx
 import React from "react";
 
 const Experience = () => (
@@ -6,6 +7,7 @@ const Experience = () => (
     <h1 className="title">Experience</h1>
     <div className="experience-details-container">
       <div className="about-containers">
+        {/* Frontend */}
         <div className="details-container">
           <h2 className="experience-sub-title">Frontend Development</h2>
           <div className="article-container">
@@ -14,7 +16,7 @@ const Experience = () => (
               "CSS",
               "SASS",
               "JavaScript",
-              "TypeScript",
+              "Tailwind",
               "Material UI",
             ].map((skill) => (
               <article key={skill}>
@@ -25,42 +27,35 @@ const Experience = () => (
                 />
                 <div>
                   <h3>{skill}</h3>
-                  <p>
-                    {skill === "JavaScript" || skill === "TypeScript"
-                      ? "Basic"
-                      : skill === "SASS" || skill === "Material UI"
-                      ? "Intermediate"
-                      : "Experienced"}
-                  </p>
                 </div>
               </article>
             ))}
           </div>
         </div>
+
+        {/* Backend */}
         <div className="details-container">
           <h2 className="experience-sub-title">Backend Development</h2>
           <div className="article-container">
-            {["PostgreSQL", "Node JS", "Express JS", "Git"].map((skill) => (
-              <article key={skill}>
-                <img
-                  src="/assets/checkmark.png"
-                  alt="Experience icon"
-                  className="icon"
-                />
-                <div>
-                  <h3>{skill}</h3>
-                  <p>
-                    {skill === "Git" || skill.includes("JS")
-                      ? "Intermediate"
-                      : "Basic"}
-                  </p>
-                </div>
-              </article>
-            ))}
+            {["Git", "Node JS", "React", "Supabase", "GraphQL", "VantaJS"].map(
+              (skill) => (
+                <article key={skill}>
+                  <img
+                    src="/assets/checkmark.png"
+                    alt="Experience icon"
+                    className="icon"
+                  />
+                  <div>
+                    <h3>{skill}</h3>
+                  </div>
+                </article>
+              )
+            )}
           </div>
         </div>
       </div>
     </div>
+
     <img
       src="/assets/arrow.png"
       alt="Arrow icon"
