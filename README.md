@@ -10,13 +10,12 @@ Hi, I'm Rohit Biswas, a passionate developer, technologist, and lifelong learner
 
 - Personal and professional bio
 - Projects portfolio
-- Blog posts and articles
+- Blog posts and articles (Future Feature)
 - Contact information
 
 ## Technologies Used
 
-- [Add your stack here, e.g., Next.js, React, TypeScript, Tailwind CSS, Vercel, etc.]
-- [List any other relevant tools, frameworks, or libraries]
+Next.js, React, VantaJS, RouterDOM
 
 ## Getting Started
 
@@ -55,7 +54,7 @@ While this is primarily a personal website, suggestions and improvements are wel
 
 ## License
 
-[Specify your license here, e.g., MIT]
+2025 MIT License Rohit Biswas
 
 ---
 
