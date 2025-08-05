@@ -1,9 +1,9 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
@@ -13,20 +13,21 @@ const Navbar = () => {
         <div>
           <ul className="nav-links">
             <li>
-              <a href="#about">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="#experience">Experience</a>
+              <Link to="/experience">Experience</Link>
             </li>
             <li>
-              <a href="#projects">Projects</a>
+              <Link to="/projects">Projects</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="/">Contact</Link>
             </li>
           </ul>
         </div>
       </nav>
+
       <nav id="hamburger-nav">
         <div className="logo">Rohit Biswas</div>
         <div className="hamburger-menu">
@@ -38,28 +39,28 @@ const Navbar = () => {
             <span></span>
             <span></span>
           </div>
-          <div className={`menu-links ${menuOpen ? "open" : ""}`}>
+          <ul className={`menu-links ${menuOpen ? "open" : ""}`}>
             <li>
-              <a href="#about" onClick={toggleMenu}>
+              <Link to="/about" onClick={toggleMenu}>
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#experience" onClick={toggleMenu}>
+              <Link to="/experience" onClick={toggleMenu}>
                 Experience
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#projects" onClick={toggleMenu}>
+              <Link to="/projects" onClick={toggleMenu}>
                 Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" onClick={toggleMenu}>
+              <Link to="/" onClick={toggleMenu}>
                 Contact
-              </a>
+              </Link>
             </li>
-          </div>
+          </ul>
         </div>
       </nav>
     </>
