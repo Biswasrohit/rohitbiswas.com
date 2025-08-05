@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,26 +8,48 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Desktop nav */}
       <nav id="desktop-nav">
         <div className="logo">Rohit Biswas</div>
         <div>
           <ul className="nav-links">
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/experience">Experience</Link>
+              <NavLink
+                to="/experience"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Experience
+              </NavLink>
             </li>
             <li>
-              <Link to="/projects">Projects</Link>
+              <NavLink
+                to="/projects"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Projects
+              </NavLink>
             </li>
             <li>
-              <Link to="/">Contact</Link>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Contact
+              </NavLink>
             </li>
           </ul>
         </div>
       </nav>
 
+      {/* Hamburger / mobile nav */}
       <nav id="hamburger-nav">
         <div className="logo">Rohit Biswas</div>
         <div className="hamburger-menu">
@@ -41,24 +63,40 @@ const Navbar = () => {
           </div>
           <ul className={`menu-links ${menuOpen ? "open" : ""}`}>
             <li>
-              <Link to="/about" onClick={toggleMenu}>
+              <NavLink
+                to="/about"
+                onClick={toggleMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
                 About
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/experience" onClick={toggleMenu}>
+              <NavLink
+                to="/experience"
+                onClick={toggleMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
                 Experience
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/projects" onClick={toggleMenu}>
+              <NavLink
+                to="/projects"
+                onClick={toggleMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
                 Projects
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/" onClick={toggleMenu}>
+              <NavLink
+                to="/"
+                onClick={toggleMenu}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
                 Contact
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
