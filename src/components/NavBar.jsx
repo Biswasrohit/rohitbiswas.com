@@ -4,8 +4,35 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "system"
+  );
+
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const resolveTheme = (t) =>
+    t === "system" ? (media.matches ? "dark" : "light") : t;
   const toggleMenu = () => setMenuOpen((s) => !s);
   const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = resolveTheme(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const onChange = () => {
+      if (theme === "system") {
+        document.documentElement.dataset.theme = resolveTheme("system");
+      }
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, [theme]);
+
+  const nextTheme = { system: "dark", dark: "light", light: "system" };
+  const toggleTheme = () => {
+    setTheme((t) => nextTheme[t]);
+  };
 
   // Auto-close menu on any route/hash change (mobile quality-of-life)
   useEffect(() => {
@@ -19,6 +46,9 @@ const Navbar = () => {
         <Link to="/" className="logo">
           Rohit Biswas
         </Link>
+        <button onClick={toggleTheme} className="theme-toggle">
+          {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"}
+        </button>
         <ul className="nav-links">
           <li>
             <NavLink
@@ -58,6 +88,9 @@ const Navbar = () => {
         <Link to="/" className="logo">
           Rohit Biswas
         </Link>
+        <button onClick={toggleTheme} className="theme-toggle">
+          {theme === "system" ? "🖥️" : theme === "light" ? "☀️" : "🌙"}
+        </button>
         <div className="hamburger-menu">
           <button
             type="button"
