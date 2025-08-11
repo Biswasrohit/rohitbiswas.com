@@ -13,12 +13,22 @@
 }
 
 @media screen and (max-width: 1200px) {
+  /* switch to mobile nav */
   #desktop-nav {
     display: none;
   }
   #hamburger-nav {
     display: flex;
+    height: var(--navHeight);
+    justify-content: space-between;
+    align-items: center;
   }
+
+  /* shrink global header height on mobile */
+  nav {
+    height: var(--navHeight);
+  }
+
   #experience,
   .experience-details-container {
     margin-top: 2rem;

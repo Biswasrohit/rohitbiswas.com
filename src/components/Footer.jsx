@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => (
   <footer>
@@ -6,16 +7,16 @@ const Footer = () => (
       <div className="nav-links-container">
         <ul className="nav-links">
           <li>
-            <a href="#about">About</a>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <a href="#experience">Experience</a>
+            <NavLink to="/experience">Experience</NavLink>
           </li>
           <li>
-            <a href="#projects">Projects</a>
+            <NavLink to="/projects">Projects</NavLink>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <a href="/#contact">Contact</a>
           </li>
         </ul>
       </div>
