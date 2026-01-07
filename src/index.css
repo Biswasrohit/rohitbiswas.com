@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Extend theme with custom colors using Tailwind v4 @theme */
+@theme {
+  --color-olive-50: #f6f7f0;
+  --color-olive-100: #e8ebd8;
+  --color-olive-200: #d3d9b5;
+  --color-olive-300: #b7c089;
+  --color-olive-400: #9da865;
+  --color-olive-500: #6B8E23;
+  --color-olive-600: #5a7a1c;
+  --color-olive-700: #4a641a;
+  --color-olive-800: #3d511a;
+  --color-olive-900: #34451a;
+  --color-olive-950: #1a250a;
+
+  --font-family-sans: 'Poppins', system-ui, sans-serif;
+}
+
+/* Glassmorphism Utilities */
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/70 dark:bg-zinc-900/70 border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl shadow-lg;
+  }
+
+  .glass-nav {
+    @apply backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-zinc-200/50 dark:border-zinc-800/50;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-olive-500 to-olive-700 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-semibold bg-olive-500 text-white hover:bg-olive-600 transition-all duration-300 shadow-lg hover:shadow-olive-500/25 hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 rounded-full font-semibold border-2 border-olive-500 text-olive-500 hover:bg-olive-500 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 rounded-lg font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .skill-badge {
+    @apply px-3 py-1.5 rounded-full text-sm font-medium bg-olive-500/10 text-olive-600 dark:text-olive-400 border border-olive-500/20 hover:bg-olive-500/20 transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-olive-500 focus:border-transparent transition-all duration-200 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500;
+  }
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300 antialiased;
+  }
+
+  ::selection {
+    @apply bg-olive-500/30 text-olive-900 dark:text-olive-100;
+  }
+}
+
+/* Custom Scrollbar */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-olive-500) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-olive-500);
+    border-radius: 3px;
+  }
+}

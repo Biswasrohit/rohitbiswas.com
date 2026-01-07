@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Theme initialization (prevents flash) -->
     <script>
-      (function () {
+      (function() {
         try {
-          var t = localStorage.getItem("theme") || "system";
-          var dark =
-            t === "dark" ||
-            (t === "system" &&
-              window.matchMedia("(prefers-color-scheme: dark)").matches);
-          document.documentElement.setAttribute(
-            "data-theme",
-            dark ? "dark" : "light"
-          );
+          var t = localStorage.getItem('theme') || 'system';
+          var dark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', dark);
         } catch {}
       })();
     </script>
-    <meta charset="UTF-8" />
+
+    <!-- Meta tags -->
+    <title>Rohit Biswas | Software Developer</title>
+    <meta name="description" content="Rohit Biswas - Software Developer and Computer Science student at Columbia University. View my portfolio of projects, skills, and experience." />
+    <meta name="keywords" content="Rohit Biswas, Software Developer, Columbia University, React, Python, Full Stack Developer, Portfolio" />
+    <meta name="author" content="Rohit Biswas" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rohit Biswas | Software Developer" />
+    <meta property="og:description" content="Software Developer and Computer Science student at Columbia University." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rohitbiswas.com" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
-    <title>rohitbiswas</title>
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
