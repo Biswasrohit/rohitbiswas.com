@@ -9,7 +9,7 @@ export const projects = [
     demo: null,
     featured: true,
     award: 'MLH Award - DivHacks 2025',
-    image: null,
+    image: '/assets/stemme-study.png',
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const projects = [
     demo: null,
     featured: true,
     award: 'Winner - MakeCU',
-    image: null,
+    image: '/assets/autodump.jpg',
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ export const projects = [
     demo: null,
     featured: true,
     award: null,
-    image: null,
+    image: '/assets/http-server.png',
   },
   {
     id: 5,
