@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (instead of media query) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Extend theme with custom colors using Tailwind v4 @theme */
 @theme {
   --color-olive-50: #f6f7f0;

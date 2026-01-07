@@ -1,19 +1,26 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useLayoutEffect } from 'react';
 
 export const ThemeContext = createContext();
 
+// Helper to get the initial resolved theme - check what's already set on the document
+const getInitialResolvedTheme = () => {
+  if (typeof window === 'undefined') return 'light';
+  // Check what the HTML already has (set by index.html script)
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+};
+
+const getInitialTheme = () => {
+  if (typeof window === 'undefined') return 'system';
+  return localStorage.getItem('theme') || 'system';
+};
+
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'system';
-    }
-    return 'system';
-  });
+  const [theme, setTheme] = useState(getInitialTheme);
+  const [resolvedTheme, setResolvedTheme] = useState(getInitialResolvedTheme);
 
-  const [resolvedTheme, setResolvedTheme] = useState('light');
-
-  useEffect(() => {
-    const root = window.document.documentElement;
+  // Use useLayoutEffect to prevent flash - runs synchronously before paint
+  useLayoutEffect(() => {
+    const root = document.documentElement;
 
     const applyTheme = (themeToApply) => {
       if (themeToApply === 'dark') {
