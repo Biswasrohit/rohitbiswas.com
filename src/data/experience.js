@@ -7,10 +7,11 @@ export const experience = [
     period: 'Oct 2025 - Present',
     current: true,
     description: [
-      'Configured and imaged over 50+ Windows 10/11 workstations using Microsoft Deployment Toolkit (MDT) and automated provisioning scripts, reducing setup time per device by 40%.',
-      'Developed PowerShell scripts to automate software installation, driver updates, and network printer mapping, streamlining repetitive configuration tasks across lab and office systems.',
+      'Engineered automated IT workflow solutions reducing manual administration time by 40% by developing bash scripts, scheduling automation, and room scheduling/permission management features.',
+      'Improved system reliability and cut incident response time by 60% by implementing log aggregation monitoring, creating automated alert pipelines for 500+ daily events, and optimizing infrastructure.',
+      'Eliminated compatibility issues across 100+ machine configurations by designing systematic BIOS/software deployment pipeline with CI/CD-style weekly rollouts and automated validation.',
     ],
-    technologies: ['PowerShell', 'MDT', 'Windows', 'Automation'],
+    technologies: ['Bash', 'CI/CD', 'Monitoring', 'Automation'],
   },
   {
     id: 2,
@@ -20,10 +21,10 @@ export const experience = [
     period: 'Sep 2024 - Present',
     current: true,
     description: [
-      'Engineered HobbyHub, a community chat platform, with Vite React and Supabase, enhancing the user experience by optimizing navigation and user interface design.',
-      'Designed a web-based character customizer for the Codepath community, facilitating unique character creations using Supabase and advanced routing.',
+      'Completed 3 technical tracks (web development, cybersecurity, mobile development) through intensive coursework, building 12+ projects and mastering modern frameworks including React, React Native, and security best practices.',
+      'Collaborated with 20+ peers on code reviews and pair programming sessions to improve code quality, debug complex issues, and learn industry-standard software development workflows.',
     ],
-    technologies: ['React', 'Vite', 'Supabase', 'JavaScript'],
+    technologies: ['React', 'React Native', 'Security', 'Web Development'],
   },
   {
     id: 3,
@@ -33,22 +34,22 @@ export const experience = [
     period: 'Jun 2025 - Aug 2025',
     current: false,
     description: [
-      'Resolved 20+ security incidents by triaging alerts in Splunk Enterprise Security, escalating legitimate threats to senior analysts, and reducing investigation turnaround time by 40%.',
-      'Reduced open dynamic scan findings by 30% in 6 weeks by leveraging Veracode Dynamic Analysis (DAST) to identify vulnerabilities in externally-facing web applications.',
+      'Resolved 20+ security incidents by triaging alerts in Splunk Enterprise Security, escalating legitimate threats to senior analysts, and reducing investigation turnaround time by 40% with a reusable Splunk search template.',
+      'Reduced open dynamic scan findings by 30% in 6 weeks by leveraging Veracode Dynamic Analysis (DAST) to identify vulnerabilities in externally-facing web applications and generate actionable remediation reports.',
     ],
     technologies: ['Splunk', 'Veracode', 'DAST', 'Security'],
   },
   {
     id: 4,
     role: 'IT Engineer',
-    company: 'Fordham University',
+    company: 'Enrollment Group at Fordham University',
     location: 'Bronx, NY',
     period: 'May 2023 - Jun 2025',
     current: false,
     description: [
-      'Spearheaded the coordination and deployment for enterprise platforms including PowerFAIDS, Crowdstrike, SPSS, LANDESK, and Hyland OnBase Unity Client.',
-      'Improved inventory management and support efficiency by maintaining accurate records in FreshService, Google Sheets, and Excel, and producing video tutorials for common technical issues.',
+      'Automated enterprise software deployment and data processing workflows using PowerShell, Python, and Bash scripts, reducing deployment time by 70% and ensuring consistent configurations across 200+ workstations.',
+      'Integrated multiple enterprise platforms (PowerFAIDS, Crowdstrike, LANDESK) via REST APIs and database connections, containerizing services to enable seamless cross-platform data synchronization and automated reporting.',
     ],
-    technologies: ['FreshService', 'Crowdstrike', 'LANDESK', 'IT Support'],
+    technologies: ['PowerShell', 'Python', 'Bash', 'REST APIs', 'Docker'],
   },
 ];
