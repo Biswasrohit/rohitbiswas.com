@@ -4,6 +4,8 @@ A modern, responsive portfolio website built with React and Tailwind CSS, featur
 
 **Live Site:** [rohitbiswas.com](https://rohitbiswas.com)
 
+![Home Page](./public/assets/home-page.png)
+
 ## Features
 
 - **Glassmorphism Design** — Modern frosted glass aesthetic with olive green accents
@@ -26,15 +28,15 @@ A modern, responsive portfolio website built with React and Tailwind CSS, featur
 
 ## Sections
 
-| Section | Description |
-|---------|-------------|
-| Hero | Profile photo with aurora animation, CTAs, social links |
-| About | Bio and personal introduction |
-| Skills | Categorized technical skills (Languages, Frameworks, Tools) |
-| Experience | Work history in timeline layout |
-| Education | Academic background |
-| Projects | Filterable project cards with images and links |
-| Contact | EmailJS-powered contact form |
+| Section    | Description                                                 |
+| ---------- | ----------------------------------------------------------- |
+| Hero       | Profile photo with aurora animation, CTAs, social links     |
+| About      | Bio and personal introduction                               |
+| Skills     | Categorized technical skills (Languages, Frameworks, Tools) |
+| Experience | Work history in timeline layout                             |
+| Education  | Academic background                                         |
+| Projects   | Filterable project cards with images and links              |
+| Contact    | EmailJS-powered contact form                                |
 
 ## Getting Started
 
@@ -90,16 +92,20 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ## Customization
 
 ### Colors
+
 Edit the olive color palette in `src/index.css`:
+
 ```css
 @theme {
-  --color-olive-500: #6B8E23;
+  --color-olive-500: #6b8e23;
   /* ... other shades */
 }
 ```
 
 ### Content
+
 Update your information in the data files:
+
 - `src/data/projects.js` — Project entries
 - `src/data/skills.js` — Skill categories
 - `src/data/experience.js` — Work experience
