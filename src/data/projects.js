@@ -1,6 +1,18 @@
 export const projects = [
   {
     id: 1,
+    title: 'PlanYourDates',
+    description: 'A shareable date planning platform that allows users to create beautiful itineraries with timeline builders, budget tracking, and real-time collaboration. No signup required.',
+    tags: ['React', 'Vite', 'Firebase', 'Firestore', 'Tailwind CSS', 'Framer Motion'],
+    categories: ['web'],
+    github: null,
+    demo: 'https://planyourdates.netlify.app/',
+    featured: true,
+    award: null,
+    image: '/assets/planyourdates.png',
+  },
+  {
+    id: 2,
     title: 'Stemme.Study',
     description: 'A full-stack AI companion that assists children with speech disorders through real-time speech-to-text, text-to-speech, and generative dialogue using Python, React, Gemini API, and ElevenLabs.',
     tags: ['Python', 'React', 'Node.js', 'Express.js', 'Gemini API', 'ElevenLabs', 'Vite'],
@@ -12,7 +24,7 @@ export const projects = [
     image: '/assets/stemme-study.png',
   },
   {
-    id: 2,
+    id: 3,
     title: 'AutoDump',
     description: 'An autonomous self-emptying trash rover that vision-docks to bins using ArUco markers and ultrasonic sensing, then servo-dumps into a central can.',
     tags: ['Raspberry Pi', 'OpenCV', 'Python', 'C++', 'Arduino'],
@@ -24,7 +36,7 @@ export const projects = [
     image: '/assets/autodump.jpg',
   },
   {
-    id: 3,
+    id: 4,
     title: 'R2D3',
     description: 'A proof-of-concept solar tracker that automatically orients a photovoltaic panel in two axes to maximize sunlight exposure. Built with Arduino Uno, hobby servos, and custom PLA-printed parts.',
     tags: ['C++', 'Arduino', 'SolidWorks', 'TinkerCAD'],
@@ -36,7 +48,7 @@ export const projects = [
     image: '/assets/r2d3.jpg',
   },
   {
-    id: 4,
+    id: 5,
     title: 'HTTP/1.0 Web Server',
     description: 'A C-based HTTP/1.0 web server that serves static HTML/image files and a dynamic lookup endpoint backed by a persistent TCP mdb-lookup service.',
     tags: ['C', 'POSIX Sockets', 'HTTP/1.0', 'Networking'],
@@ -48,7 +60,7 @@ export const projects = [
     image: '/assets/http-server.png',
   },
   {
-    id: 5,
+    id: 6,
     title: 'HobbyHub',
     description: 'A community chat platform for hobby enthusiasts to connect and share, built with Vite React and Supabase.',
     tags: ['React', 'Vite', 'Supabase', 'JavaScript'],
@@ -60,7 +72,7 @@ export const projects = [
     image: '/assets/hobbyhub.jpg',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Crewmate Creator',
     description: 'An interactive character creator inspired by Among Us, facilitating unique character creations using Supabase and advanced routing.',
     tags: ['React', 'JavaScript', 'Supabase', 'CSS'],
