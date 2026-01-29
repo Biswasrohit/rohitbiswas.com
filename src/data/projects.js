@@ -1,5 +1,17 @@
 export const projects = [
   {
+    id: 8,
+    title: 'PageRank Visualizer',
+    description: 'Interactive visualization of Google\'s PageRank algorithm featuring graph editing, power iteration animation, and centrality comparisons. Built to accompany my Applied Linear Algebra research paper.',
+    tags: ['React', 'React Flow', 'Framer Motion', 'Linear Algebra', 'Graph Theory'],
+    categories: ['web', 'ai'],
+    github: 'https://github.com/Biswasrohit',
+    demo: '/pagerank',
+    featured: true,
+    award: null,
+    image: '/assets/pagerank-preview.png',
+  },
+  {
     id: 1,
     title: 'PlanYourDates',
     description: 'A shareable date planning platform that allows users to create beautiful itineraries with timeline builders, budget tracking, and real-time collaboration. No signup required.',
