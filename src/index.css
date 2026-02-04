@@ -1,5 +1,5 @@
-@import "@xyflow/react/dist/style.css";
 @import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
 
 /* Enable class-based dark mode (instead of media query) */
 @custom-variant dark (&:where(.dark, .dark *));
