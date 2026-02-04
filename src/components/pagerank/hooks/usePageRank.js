@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import {
   pageRankGenerator,
   computeInDegreeCentrality,
@@ -32,7 +32,6 @@ export function usePageRank(nodes, edges) {
   const [iteration, setIteration] = useState(0);
   const [convergenceDelta, setConvergenceDelta] = useState(1);
   const [isConverged, setIsConverged] = useState(false);
-  const [history, setHistory] = useState([]);
 
   // Animation state
   const [isRunning, setIsRunning] = useState(false);
@@ -48,8 +47,27 @@ export function usePageRank(nodes, edges) {
   const generatorRef = useRef(null);
   const intervalRef = useRef(null);
 
+  // Keep refs to current nodes/edges for use inside interval callbacks
+  const nodesRef = useRef(nodes);
+  const edgesRef = useRef(edges);
+  const alphaRef = useRef(alpha);
+  nodesRef.current = nodes;
+  edgesRef.current = edges;
+  alphaRef.current = alpha;
+
+  // Stable keys for detecting structural changes (not position changes)
+  const nodeIdsKey = useMemo(
+    () => nodes.map(n => n.id).sort().join(','),
+    [nodes]
+  );
+  const edgesKey = useMemo(
+    () => edges.map(e => `${e.source}->${e.target}`).sort().join(','),
+    [edges]
+  );
+
   /**
-   * Initialize/reset ranks when graph or alpha changes
+   * Initialize/reset ranks when graph STRUCTURE or alpha changes.
+   * Position-only changes (dragging) do NOT trigger reset.
    */
   useEffect(() => {
     const n = nodes.length;
@@ -63,7 +81,6 @@ export function usePageRank(nodes, edges) {
     setIteration(0);
     setConvergenceDelta(1);
     setIsConverged(false);
-    setHistory([{ iteration: 0, ranks: new Map(initialRanks), convergenceDelta: 1 }]);
     setIsRunning(false);
 
     // Reset generator
@@ -81,7 +98,7 @@ export function usePageRank(nodes, edges) {
     setEigenvectorCentrality(computeEigenvectorCentrality(graph));
     setDanglingNodes(getDanglingNodes(graph));
 
-  }, [nodes, edges, alpha]);
+  }, [nodeIdsKey, edgesKey, alpha]);
 
   /**
    * Animation loop effect
@@ -90,7 +107,10 @@ export function usePageRank(nodes, edges) {
     if (isRunning && !isConverged) {
       intervalRef.current = setInterval(() => {
         if (!generatorRef.current) {
-          generatorRef.current = pageRankGenerator({ nodes, edges }, alpha);
+          generatorRef.current = pageRankGenerator(
+            { nodes: nodesRef.current, edges: edgesRef.current },
+            alphaRef.current
+          );
           // Skip initial state since we already have it
           generatorRef.current.next();
         }
@@ -104,23 +124,22 @@ export function usePageRank(nodes, edges) {
             setRanks(result.value.ranks);
             setIteration(result.value.iteration);
             setConvergenceDelta(result.value.convergenceDelta);
-            setHistory(prev => [...prev, result.value]);
           }
         } else {
           setRanks(result.value.ranks);
           setIteration(result.value.iteration);
           setConvergenceDelta(result.value.convergenceDelta);
-          setHistory(prev => [...prev, result.value]);
         }
       }, SPEED_MAP[speed]);
 
       return () => {
         if (intervalRef.current) {
           clearInterval(intervalRef.current);
+          intervalRef.current = null;
         }
       };
     }
-  }, [isRunning, isConverged, speed, nodes, edges, alpha]);
+  }, [isRunning, isConverged, speed]);
 
   /**
    * Start the animation
@@ -129,13 +148,16 @@ export function usePageRank(nodes, edges) {
     if (isConverged) return;
 
     if (!generatorRef.current) {
-      generatorRef.current = pageRankGenerator({ nodes, edges }, alpha);
+      generatorRef.current = pageRankGenerator(
+        { nodes: nodesRef.current, edges: edgesRef.current },
+        alphaRef.current
+      );
       // Skip initial state
       generatorRef.current.next();
     }
 
     setIsRunning(true);
-  }, [nodes, edges, alpha, isConverged]);
+  }, [isConverged]);
 
   /**
    * Pause the animation
@@ -151,7 +173,10 @@ export function usePageRank(nodes, edges) {
     if (isConverged) return;
 
     if (!generatorRef.current) {
-      generatorRef.current = pageRankGenerator({ nodes, edges }, alpha);
+      generatorRef.current = pageRankGenerator(
+        { nodes: nodesRef.current, edges: edgesRef.current },
+        alphaRef.current
+      );
       // Skip initial state
       generatorRef.current.next();
     }
@@ -164,15 +189,13 @@ export function usePageRank(nodes, edges) {
         setRanks(result.value.ranks);
         setIteration(result.value.iteration);
         setConvergenceDelta(result.value.convergenceDelta);
-        setHistory(prev => [...prev, result.value]);
       }
     } else {
       setRanks(result.value.ranks);
       setIteration(result.value.iteration);
       setConvergenceDelta(result.value.convergenceDelta);
-      setHistory(prev => [...prev, result.value]);
     }
-  }, [nodes, edges, alpha, isConverged]);
+  }, [isConverged]);
 
   /**
    * Reset to initial state
@@ -187,24 +210,22 @@ export function usePageRank(nodes, edges) {
 
     generatorRef.current = null;
 
-    const n = nodes.length;
+    const n = nodesRef.current.length;
     const initialRanks = new Map();
     const uniformRank = n > 0 ? 1 / n : 0;
-    nodes.forEach(node => initialRanks.set(node.id, uniformRank));
+    nodesRef.current.forEach(node => initialRanks.set(node.id, uniformRank));
 
     setRanks(initialRanks);
     setIteration(0);
     setConvergenceDelta(1);
     setIsConverged(false);
-    setHistory([{ iteration: 0, ranks: new Map(initialRanks), convergenceDelta: 1 }]);
-  }, [nodes]);
+  }, []);
 
   /**
-   * Update damping factor (triggers reset)
+   * Update damping factor (triggers reset via effect)
    */
   const updateAlpha = useCallback((newAlpha) => {
     setAlpha(newAlpha);
-    // Reset will be triggered by the useEffect
   }, []);
 
   /**
@@ -213,29 +234,6 @@ export function usePageRank(nodes, edges) {
   const updateSpeed = useCallback((newSpeed) => {
     setSpeed(newSpeed);
   }, []);
-
-  /**
-   * Run to convergence instantly (no animation)
-   */
-  const runToConvergence = useCallback(() => {
-    const gen = pageRankGenerator({ nodes, edges }, alpha);
-    let result = gen.next();
-    const newHistory = [];
-
-    while (!result.done && !result.value.converged) {
-      newHistory.push(result.value);
-      result = gen.next();
-    }
-
-    if (result.value) {
-      newHistory.push(result.value);
-      setRanks(result.value.ranks);
-      setIteration(result.value.iteration);
-      setConvergenceDelta(result.value.convergenceDelta);
-      setIsConverged(true);
-      setHistory(newHistory);
-    }
-  }, [nodes, edges, alpha]);
 
   /**
    * Get ranks for a specific centrality mode
@@ -260,7 +258,6 @@ export function usePageRank(nodes, edges) {
     convergenceDelta,
     isConverged,
     isRunning,
-    history,
     alpha,
     speed,
     danglingNodes,
@@ -275,7 +272,6 @@ export function usePageRank(nodes, edges) {
     pause,
     step,
     reset,
-    runToConvergence,
 
     // Settings
     setAlpha: updateAlpha,
