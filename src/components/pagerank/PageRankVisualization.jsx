@@ -1,6 +1,6 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ReactFlowProvider, useNodesState, useEdgesState, applyNodeChanges } from '@xyflow/react';
+import { ReactFlowProvider } from '@xyflow/react';
 import GraphCanvas from './GraphCanvas';
 import ControlPanel from './ControlPanel';
 import PresetGraphs from './PresetGraphs';
