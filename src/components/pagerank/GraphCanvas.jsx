@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import {
   ReactFlow,
   Background,
@@ -7,6 +7,8 @@ import {
   useReactFlow,
   MarkerType,
   ConnectionMode,
+  useNodesState,
+  useEdgesState,
 } from '@xyflow/react';
 import PageRankNode from './PageRankNode';
 
@@ -36,27 +38,16 @@ const defaultEdgeOptions = {
 };
 
 /**
- * GraphCanvas component - Renders the interactive graph using React Flow
- *
- * @param {Object} props
- * @param {Array} props.nodes - Graph nodes
- * @param {Array} props.edges - Graph edges
- * @param {Map} props.ranks - Current PageRank values
- * @param {Array} props.danglingNodes - List of dangling node IDs
- * @param {Function} props.onNodesChange - Handler for node changes
- * @param {Function} props.onEdgesChange - Handler for edge changes
- * @param {Function} props.onAddNode - Handler for adding a node
- * @param {Function} props.onAddEdge - Handler for adding an edge
- * @param {Function} props.onDeleteNode - Handler for deleting a node
- * @param {Function} props.onDeleteEdge - Handler for deleting an edge
+ * GraphCanvas component - Renders the interactive graph using React Flow.
+ * Uses useNodesState/useEdgesState for proper internal state management
+ * (dimensions, selections, etc.) while syncing with parent props.
  */
 const GraphCanvas = ({
   nodes,
   edges,
   ranks,
   danglingNodes = [],
-  onNodesChange,
-  onEdgesChange,
+  onNodesChange: onNodesChangeProp,
   onAddNode,
   onAddEdge,
   onDeleteNode,
@@ -65,51 +56,77 @@ const GraphCanvas = ({
   const reactFlowWrapper = useRef(null);
   const { screenToFlowPosition } = useReactFlow();
 
-  // Calculate max rank for normalization
-  const maxRank = useMemo(() => {
-    if (ranks.size === 0) return 1;
-    return Math.max(...Array.from(ranks.values()), 0.001);
-  }, [ranks]);
+  // React Flow's own state management — handles dimensions, selections, etc.
+  const [rfNodes, setRfNodes, onRfNodesChange] = useNodesState([]);
+  const [rfEdges, setRfEdges, onRfEdgesChange] = useEdgesState([]);
 
-  // Transform nodes for React Flow with rank data
-  const flowNodes = useMemo(() => {
-    return nodes.map(node => ({
-      id: node.id,
-      type: 'pagerank',
-      position: node.position,
-      data: {
-        label: node.label || node.id,
-        rank: ranks.get(node.id) || 0,
-        normalizedRank: (ranks.get(node.id) || 0) / maxRank,
-        isDangling: danglingNodes.includes(node.id),
-      },
-      draggable: true,
-    }));
-  }, [nodes, ranks, maxRank, danglingNodes]);
+  // Track node structure to distinguish data-only updates from structural changes
+  const prevNodeIdsRef = useRef('');
 
-  // Transform edges for React Flow
-  const flowEdges = useMemo(() => {
-    return edges.map(edge => ({
+  // Sync graph nodes + ranks from props into React Flow state
+  useEffect(() => {
+    const currentIds = nodes.map(n => n.id).sort().join(',');
+    const structureChanged = currentIds !== prevNodeIdsRef.current;
+    prevNodeIdsRef.current = currentIds;
+
+    const maxRank = ranks.size > 0 ? Math.max(...Array.from(ranks.values()), 0.001) : 1;
+
+    if (structureChanged) {
+      // Full rebuild when nodes are added/removed/loaded
+      setRfNodes(nodes.map(node => ({
+        id: node.id,
+        type: 'pagerank',
+        position: node.position,
+        data: {
+          label: node.label || node.id,
+          rank: ranks.get(node.id) || 0,
+          normalizedRank: (ranks.get(node.id) || 0) / maxRank,
+          isDangling: danglingNodes.includes(node.id),
+        },
+        draggable: true,
+      })));
+    } else {
+      // Only update data (preserves dragged positions and measured dimensions)
+      setRfNodes(prev => prev.map(node => ({
+        ...node,
+        data: {
+          ...node.data,
+          rank: ranks.get(node.id) || 0,
+          normalizedRank: (ranks.get(node.id) || 0) / maxRank,
+          isDangling: danglingNodes.includes(node.id),
+        },
+      })));
+    }
+  }, [nodes, ranks, danglingNodes, setRfNodes]);
+
+  // Sync edges from props into React Flow state
+  useEffect(() => {
+    setRfEdges(edges.map(edge => ({
       id: `${edge.source}->${edge.target}`,
       source: edge.source,
       target: edge.target,
       ...defaultEdgeOptions,
-    }));
-  }, [edges]);
+    })));
+  }, [edges, setRfEdges]);
 
-  // Handle node position changes (dragging)
+  // Handle all node changes (dimensions, position, selection, etc.)
   const handleNodesChange = useCallback((changes) => {
-    if (onNodesChange) {
-      onNodesChange(changes);
-    }
-  }, [onNodesChange]);
+    // Let React Flow apply all changes internally (critical for dimensions!)
+    onRfNodesChange(changes);
 
-  // Handle edge changes
-  const handleEdgesChange = useCallback((changes) => {
-    if (onEdgesChange) {
-      onEdgesChange(changes);
+    // Forward position changes to parent for state sync
+    if (onNodesChangeProp) {
+      const positionChanges = changes.filter(c => c.type === 'position' && c.position);
+      if (positionChanges.length > 0) {
+        onNodesChangeProp(positionChanges);
+      }
     }
-  }, [onEdgesChange]);
+  }, [onRfNodesChange, onNodesChangeProp]);
+
+  // Handle edge changes (selection, removal, etc.)
+  const handleEdgesChange = useCallback((changes) => {
+    onRfEdgesChange(changes);
+  }, [onRfEdgesChange]);
 
   // Handle new connection (edge creation)
   const handleConnect = useCallback((connection) => {
@@ -140,7 +157,6 @@ const GraphCanvas = ({
   const handleEdgesDelete = useCallback((deletedEdges) => {
     if (onDeleteEdge) {
       deletedEdges.forEach(edge => {
-        // Parse source and target from edge id
         const [source, target] = edge.id.split('->');
         onDeleteEdge(source, target);
       });
@@ -150,8 +166,8 @@ const GraphCanvas = ({
   return (
     <div ref={reactFlowWrapper} className="relative w-full h-full">
       <ReactFlow
-        nodes={flowNodes}
-        edges={flowEdges}
+        nodes={rfNodes}
+        edges={rfEdges}
         nodeTypes={nodeTypes}
         onNodesChange={handleNodesChange}
         onEdgesChange={handleEdgesChange}
