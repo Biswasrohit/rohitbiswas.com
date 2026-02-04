@@ -148,33 +148,29 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
           </p>
         </motion.div>
 
-        {/* Main Layout */}
+        {/* Row 1: Graph Canvas + Algorithm Controls */}
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Graph Canvas - Takes 2 columns */}
           <div className="lg:col-span-2">
-            <GlassCard className="p-2 h-[450px] lg:h-[550px]" animate={false}>
-              <GraphCanvas
-                nodes={nodes}
-                edges={edges}
-                ranks={currentRanks}
-                danglingNodes={danglingNodes}
-                onNodesChange={onNodesChange}
-                onAddNode={addNode}
-                onAddEdge={addEdge}
-                onDeleteNode={deleteNode}
-                onDeleteEdge={deleteEdge}
-              />
+            <GlassCard className="p-2" animate={false}>
+              <div className="h-[400px] lg:h-[500px]">
+                <GraphCanvas
+                  nodes={nodes}
+                  edges={edges}
+                  ranks={currentRanks}
+                  danglingNodes={danglingNodes}
+                  onNodesChange={onNodesChange}
+                  onAddNode={addNode}
+                  onAddEdge={addEdge}
+                  onDeleteNode={deleteNode}
+                  onDeleteEdge={deleteEdge}
+                />
+              </div>
             </GlassCard>
           </div>
 
-          {/* Sidebar Controls */}
-          <div className="space-y-4 lg:max-h-[550px] lg:overflow-y-auto">
-            <PresetGraphs
-              selectedPreset={selectedPreset}
-              onSelect={loadPreset}
-              onClear={clearGraph}
-            />
-
+          {/* Algorithm Controls - Right column */}
+          <div className="space-y-4">
             <ControlPanel
               alpha={alpha}
               speed={speed}
@@ -190,25 +186,31 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
               onReset={reset}
             />
 
-            <RankDisplay
-              nodes={nodes}
-              ranks={currentRanks}
-              danglingNodes={danglingNodes}
-            />
-
-            <CentralityComparison
-              mode={centralityMode}
-              onModeChange={setCentralityMode}
-              nodes={nodes}
-              pageRank={ranks}
-              inDegree={inDegreeCentrality}
-              eigenvector={eigenvectorCentrality}
+            <PresetGraphs
+              selectedPreset={selectedPreset}
+              onSelect={loadPreset}
+              onClear={clearGraph}
             />
           </div>
         </div>
 
-        {/* Expandable Educational Panels */}
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
+        {/* Row 2: Rankings + Centrality */}
+        <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <RankDisplay
+            nodes={nodes}
+            ranks={currentRanks}
+            danglingNodes={danglingNodes}
+          />
+
+          <CentralityComparison
+            mode={centralityMode}
+            onModeChange={setCentralityMode}
+            nodes={nodes}
+            pageRank={ranks}
+            inDegree={inDegreeCentrality}
+            eigenvector={eigenvectorCentrality}
+          />
+
           <MatrixDisplay
             nodes={nodes}
             edges={edges}
@@ -216,7 +218,10 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
             expanded={showMatrix}
             onToggle={() => setShowMatrix(!showMatrix)}
           />
+        </div>
 
+        {/* Row 3: Educational Content */}
+        <div className="mt-6">
           <EducationalContent
             expanded={showEducational}
             onToggle={() => setShowEducational(!showEducational)}
