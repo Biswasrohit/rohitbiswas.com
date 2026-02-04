@@ -75,7 +75,7 @@
   }
 
   ::selection {
-    @apply bg-olive-500/30 text-olive-900 dark:text-olive-100;
+    @apply bg-zinc-700/30 text-zinc-900 dark:bg-zinc-300/30 dark:text-zinc-100;
   }
 }
 
@@ -98,4 +98,16 @@
     background-color: var(--color-olive-500);
     border-radius: 3px;
   }
+}
+
+/* React Flow control button overrides */
+.react-flow__controls-button {
+  background-color: #3f3f46 !important;
+  border-color: #52525b !important;
+  fill: #a1a1aa !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #52525b !important;
+  fill: #d4d4d8 !important;
 }
