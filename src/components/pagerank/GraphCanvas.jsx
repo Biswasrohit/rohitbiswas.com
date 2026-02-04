@@ -8,7 +8,6 @@ import {
   MarkerType,
   ConnectionMode,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 import PageRankNode from './PageRankNode';
 
 /**
@@ -149,7 +148,7 @@ const GraphCanvas = ({
   }, [onDeleteEdge]);
 
   return (
-    <div ref={reactFlowWrapper} className="w-full h-full">
+    <div ref={reactFlowWrapper} className="relative w-full h-full">
       <ReactFlow
         nodes={flowNodes}
         edges={flowEdges}
