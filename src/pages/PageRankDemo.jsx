@@ -77,7 +77,7 @@ const PageRankDemo = () => {
       <PageRankVisualization embedded />
 
       {/* Brief Explanation Section */}
-      <section className="max-w-4xl mx-auto px-4 py-12">
+      <section className="max-w-7xl mx-auto px-4 py-12">
         <GlassCard className="p-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,22 @@ const PageRankDemo = () => {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            {/* PDF Preview */}
+            <div className="mt-8 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800">
+              <object
+                data="/assets/PageRank_MarkovChains_RohitBiswas.pdf"
+                type="application/pdf"
+                className="w-full h-125"
+              >
+                <div className="flex items-center justify-center h-50 text-zinc-500 dark:text-zinc-400 text-sm">
+                  <p>PDF preview not available in your browser.
+                    <a href="/assets/PageRank_MarkovChains_RohitBiswas.pdf" download className="text-olive-500 hover:underline ml-1">Download instead</a>
+                  </p>
+                </div>
+              </object>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-4">
               <a
                 href="/assets/PageRank_MarkovChains_RohitBiswas.pdf"
                 download
