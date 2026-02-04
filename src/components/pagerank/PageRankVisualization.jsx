@@ -152,7 +152,7 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Graph Canvas - Takes 2 columns */}
           <div className="lg:col-span-2">
-            <GlassCard className="p-2" animate={false}>
+            <GlassCard className="p-2 h-full" animate={false}>
               <div className="h-[400px] lg:h-[500px]">
                 <GraphCanvas
                   nodes={nodes}
@@ -169,8 +169,8 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
             </GlassCard>
           </div>
 
-          {/* Algorithm Controls - Right column */}
-          <div className="space-y-4">
+          {/* Algorithm Controls - Right column, stretches to match canvas */}
+          <div className="lg:h-125">
             <ControlPanel
               alpha={alpha}
               speed={speed}
@@ -185,13 +185,16 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
               onStep={step}
               onReset={reset}
             />
-
-            <PresetGraphs
-              selectedPreset={selectedPreset}
-              onSelect={loadPreset}
-              onClear={clearGraph}
-            />
           </div>
+        </div>
+
+        {/* Row 1.5: Preset Graph Selector */}
+        <div className="mt-6">
+          <PresetGraphs
+            selectedPreset={selectedPreset}
+            onSelect={loadPreset}
+            onClear={clearGraph}
+          />
         </div>
 
         {/* Row 2: Rankings + Centrality */}
