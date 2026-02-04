@@ -33,7 +33,7 @@ const ControlPanel = ({
   onReset,
 }) => {
   return (
-    <GlassCard className="p-4" animate={false}>
+    <GlassCard className="p-4 h-full flex flex-col" animate={false}>
       <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
         Algorithm Controls
       </h3>
@@ -111,6 +111,9 @@ const ControlPanel = ({
           ))}
         </div>
       </div>
+
+      {/* Spacer to push controls to bottom */}
+      <div className="flex-1" />
 
       {/* Playback Controls */}
       <div className="flex gap-2">
