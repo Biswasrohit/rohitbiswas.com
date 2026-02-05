@@ -40,80 +40,103 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Aurora Ring Container - centered on profile pic */}
+          {/* Aurora Blob Container - centered on profile pic */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            {/* Main aurora ring */}
+            {/* Outer blob */}
             <motion.div
-              className="absolute w-[400px] h-[400px] md:w-[500px] md:h-[500px]"
+              className="absolute w-100 h-100 md:w-125 md:h-125"
+              style={{
+                background: isDark
+                  ? 'conic-gradient(from 0deg, #6B8E23, #4a6b1a, #8fbc3b, #3d5a14, #a8c256, #2d4410, #6B8E23)'
+                  : 'conic-gradient(from 0deg, #6B8E23, #8fbc3b, #b7c089, #9da865, #d3d9b5, #6B8E23)',
+                filter: 'blur(35px)',
+                opacity: isDark ? 0.9 : 0.7,
+              }}
               animate={{
-                rotate: [0, 360],
+                borderRadius: [
+                  '60% 40% 30% 70% / 60% 30% 70% 40%',
+                  '30% 60% 70% 40% / 50% 60% 30% 60%',
+                  '55% 45% 60% 40% / 35% 65% 35% 65%',
+                  '40% 60% 35% 65% / 65% 40% 60% 35%',
+                  '60% 40% 30% 70% / 60% 30% 70% 40%',
+                ],
+                rotate: [0, 120, 240, 360],
+                scale: [1, 1.05, 0.95, 1.02, 1],
               }}
               transition={{
-                duration: 60,
+                duration: 20,
                 repeat: Infinity,
-                ease: 'linear',
+                ease: 'easeInOut',
               }}
-            >
-              {/* Outer glow ring */}
-              <motion.div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: isDark
-                    ? 'conic-gradient(from 0deg, #6B8E23, #4a6b1a, #8fbc3b, #3d5a14, #a8c256, #2d4410, #6B8E23)'
-                    : 'conic-gradient(from 0deg, #6B8E23, #8fbc3b, #b7c089, #9da865, #d3d9b5, #6B8E23)',
-                  filter: 'blur(35px)',
-                  opacity: isDark ? 0.9 : 0.7,
-                }}
-                animate={{
-                  scale: [1, 1.05, 0.95, 1],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
+            />
 
-              {/* Middle ring with more definition */}
-              <motion.div
-                className="absolute inset-[15%] rounded-full"
-                style={{
-                  background: isDark
-                    ? 'conic-gradient(from 180deg, #4a6b1a, #6B8E23, #8fbc3b, #6B8E23, #3d5a14, #6B8E23, #4a6b1a)'
-                    : 'conic-gradient(from 180deg, #9da865, #6B8E23, #b7c089, #8fbc3b, #d3d9b5, #6B8E23, #9da865)',
-                  filter: 'blur(20px)',
-                  opacity: isDark ? 0.95 : 0.75,
-                }}
-                animate={{
-                  scale: [0.95, 1.02, 0.98, 0.95],
-                  rotate: [0, -30, 30, 0],
-                }}
-                transition={{
-                  duration: 12,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
+            {/* Middle blob - counter-rotates for organic feel */}
+            <motion.div
+              className="absolute w-80 h-80 md:w-100 md:h-100"
+              style={{
+                background: isDark
+                  ? 'conic-gradient(from 180deg, #4a6b1a, #6B8E23, #8fbc3b, #6B8E23, #3d5a14, #6B8E23, #4a6b1a)'
+                  : 'conic-gradient(from 180deg, #9da865, #6B8E23, #b7c089, #8fbc3b, #d3d9b5, #6B8E23, #9da865)',
+                filter: 'blur(20px)',
+                opacity: isDark ? 0.95 : 0.75,
+              }}
+              animate={{
+                borderRadius: [
+                  '40% 60% 65% 35% / 50% 35% 65% 50%',
+                  '65% 35% 40% 60% / 35% 55% 45% 65%',
+                  '35% 65% 55% 45% / 60% 40% 55% 45%',
+                  '55% 45% 35% 65% / 45% 65% 40% 60%',
+                  '40% 60% 65% 35% / 50% 35% 65% 50%',
+                ],
+                rotate: [0, -90, -180, -270, -360],
+                scale: [0.95, 1.02, 0.98, 1.04, 0.95],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
 
-              {/* Inner dark cutout to create ring effect */}
-              <motion.div
-                className="absolute inset-[33%] rounded-full bg-zinc-50 dark:bg-zinc-950"
-                style={{
-                  filter: 'blur(15px)',
-                }}
-                animate={{
-                  scale: [1, 1.05, 0.95, 1],
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
+            {/* Inner dark cutout blob */}
+            <motion.div
+              className="absolute w-52 h-52 md:w-64 md:h-64 bg-zinc-50 dark:bg-zinc-950"
+              style={{
+                filter: 'blur(15px)',
+              }}
+              animate={{
+                borderRadius: [
+                  '50% 50% 45% 55% / 55% 45% 55% 45%',
+                  '45% 55% 50% 50% / 50% 55% 45% 50%',
+                  '55% 45% 55% 45% / 45% 50% 50% 55%',
+                  '50% 50% 45% 55% / 55% 45% 55% 45%',
+                ],
+                scale: [1, 1.03, 0.97, 1],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
 
-              {/* Sharp inner edge */}
-              <div className="absolute inset-[35%] rounded-full bg-zinc-50 dark:bg-zinc-950" />
-            </motion.div>
+            {/* Sharp inner cutout */}
+            <motion.div
+              className="absolute w-48 h-48 md:w-60 md:h-60 bg-zinc-50 dark:bg-zinc-950"
+              animate={{
+                borderRadius: [
+                  '50% 50% 48% 52% / 52% 48% 52% 48%',
+                  '48% 52% 50% 50% / 50% 52% 48% 50%',
+                  '52% 48% 52% 48% / 48% 50% 50% 52%',
+                  '50% 50% 48% 52% / 52% 48% 52% 48%',
+                ],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
           </div>
 
           {/* Profile Picture */}
@@ -127,9 +150,17 @@ const Hero = () => {
 
           {/* Decorative ring */}
           <motion.div
-            className="absolute inset-0 rounded-full border-2 border-olive-500/30 z-20"
-            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.2, 0.5] }}
-            transition={{ duration: 3, repeat: Infinity }}
+            className="absolute inset-0 border-2 border-olive-500/30 z-20"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.5, 0.2, 0.5],
+              borderRadius: [
+                '60% 40% 50% 50% / 50% 60% 40% 50%',
+                '50% 50% 40% 60% / 60% 50% 50% 40%',
+                '60% 40% 50% 50% / 50% 60% 40% 50%',
+              ],
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           />
         </motion.div>
 
