@@ -61,8 +61,8 @@ const Hero = () => {
                   background: isDark
                     ? 'conic-gradient(from 0deg, #6B8E23, #4a6b1a, #8fbc3b, #3d5a14, #a8c256, #2d4410, #6B8E23)'
                     : 'conic-gradient(from 0deg, #6B8E23, #8fbc3b, #b7c089, #9da865, #d3d9b5, #6B8E23)',
-                  filter: 'blur(50px)',
-                  opacity: isDark ? 0.7 : 0.5,
+                  filter: 'blur(35px)',
+                  opacity: isDark ? 0.9 : 0.7,
                 }}
                 animate={{
                   scale: [1, 1.05, 0.95, 1],
@@ -81,8 +81,8 @@ const Hero = () => {
                   background: isDark
                     ? 'conic-gradient(from 180deg, #4a6b1a, #6B8E23, #8fbc3b, #6B8E23, #3d5a14, #6B8E23, #4a6b1a)'
                     : 'conic-gradient(from 180deg, #9da865, #6B8E23, #b7c089, #8fbc3b, #d3d9b5, #6B8E23, #9da865)',
-                  filter: 'blur(35px)',
-                  opacity: isDark ? 0.8 : 0.6,
+                  filter: 'blur(20px)',
+                  opacity: isDark ? 0.95 : 0.75,
                 }}
                 animate={{
                   scale: [0.95, 1.02, 0.98, 0.95],
@@ -97,7 +97,7 @@ const Hero = () => {
 
               {/* Inner dark cutout to create ring effect */}
               <motion.div
-                className="absolute inset-[30%] rounded-full bg-zinc-50 dark:bg-zinc-950"
+                className="absolute inset-[33%] rounded-full bg-zinc-50 dark:bg-zinc-950"
                 style={{
                   filter: 'blur(15px)',
                 }}
@@ -112,7 +112,7 @@ const Hero = () => {
               />
 
               {/* Sharp inner edge */}
-              <div className="absolute inset-[32%] rounded-full bg-zinc-50 dark:bg-zinc-950" />
+              <div className="absolute inset-[35%] rounded-full bg-zinc-50 dark:bg-zinc-950" />
             </motion.div>
           </div>
 
