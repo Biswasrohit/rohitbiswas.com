@@ -171,7 +171,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Rohit <span className="text-gradient">Biswas</span>
+          Rohit <span className="text-gradient drop-shadow-[0_0_20px_rgba(255,255,255,1)] dark:drop-shadow-[0_0_20px_rgba(0,0,0,1)]">Biswas</span>
         </motion.h1>
 
         {/* Title */}
