@@ -8,18 +8,17 @@ const NavBar = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
   const navItems = [
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'about', label: 'about' },
+    { id: 'skills', label: 'skills' },
+    { id: 'experience', label: 'exp' },
+    { id: 'projects', label: 'projects' },
+    { id: 'contact', label: 'contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = ['hero', ...navItems.map(item => item.id)];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -58,8 +57,10 @@ const NavBar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass-nav shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? 'bg-black/85 backdrop-blur-xl border-b border-white/6'
+          : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -70,31 +71,28 @@ const NavBar = () => {
           {/* Logo */}
           <motion.button
             onClick={scrollToTop}
-            className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 hover:text-olive-500 dark:hover:text-olive-400 transition-colors"
-            whileHover={{ scale: 1.02 }}
+            className="font-mono text-lg text-white/80 hover:text-white transition-colors duration-200"
             whileTap={{ scale: 0.98 }}
           >
-            Rohit<span className="text-olive-500">.</span>
+            <span className="text-[#38bdf8]">~/</span>rohit
           </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <motion.button
+              <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                className={`px-4 py-2 font-mono text-sm transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-olive-500 bg-olive-500/10'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                    ? 'text-[#38bdf8] border-b border-[#38bdf8]/60'
+                    : 'text-white/50 hover:text-white/80'
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {item.label}
-              </motion.button>
+              </button>
             ))}
-            <div className="ml-4 pl-4 border-l border-zinc-200 dark:border-zinc-700">
+            <div className="ml-3 pl-3 border-l border-white/8">
               <ThemeToggle />
             </div>
           </div>
@@ -104,16 +102,16 @@ const NavBar = () => {
             <ThemeToggle />
             <motion.button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              className="p-2 rounded-md text-white/50 hover:text-white/80 transition-colors duration-200"
               whileTap={{ scale: 0.95 }}
               aria-label="Toggle menu"
             >
-              <div className="w-6 h-5 relative flex flex-col justify-between">
+              <div className="w-5 h-4 relative flex flex-col justify-between">
                 <motion.span
                   className="block h-0.5 w-full bg-current rounded-full"
                   animate={{
                     rotate: menuOpen ? 45 : 0,
-                    y: menuOpen ? 9 : 0,
+                    y: menuOpen ? 7 : 0,
                   }}
                   transition={{ duration: 0.2 }}
                 />
@@ -129,7 +127,7 @@ const NavBar = () => {
                   className="block h-0.5 w-full bg-current rounded-full"
                   animate={{
                     rotate: menuOpen ? -45 : 0,
-                    y: menuOpen ? -9 : 0,
+                    y: menuOpen ? -7 : 0,
                   }}
                   transition={{ duration: 0.2 }}
                 />
@@ -143,7 +141,7 @@ const NavBar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="md:hidden absolute top-full left-0 right-0 glass-nav shadow-lg border-t border-zinc-200/50 dark:border-zinc-800/50"
+            className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/6"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -154,15 +152,16 @@ const NavBar = () => {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                  className={`w-full text-left px-4 py-3 rounded-md font-mono text-sm transition-colors duration-200 ${
                     activeSection === item.id
-                      ? 'text-olive-500 bg-olive-500/10'
-                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                      ? 'text-[#38bdf8] bg-white/5'
+                      : 'text-white/50 hover:text-white/80 hover:bg-white/5'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
+                  <span className="text-white/20 mr-2">//</span>
                   {item.label}
                 </motion.button>
               ))}
