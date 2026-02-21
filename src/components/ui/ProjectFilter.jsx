@@ -13,12 +13,11 @@ const ProjectFilter = ({ categories, activeCategory, onCategoryChange }) => {
         <motion.button
           key={category.id}
           onClick={() => onCategoryChange(category.id)}
-          className={`px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 ${
+          className={`px-4 py-2 rounded-sm font-mono text-sm transition-colors duration-200 ${
             activeCategory === category.id
-              ? 'bg-olive-500 text-white shadow-lg shadow-olive-500/25'
-              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+              ? 'bg-white/8 border border-white/20 text-white shadow-[0_0_12px_rgba(56,189,248,0.2)]'
+              : 'bg-transparent border border-white/8 text-white/40 hover:border-white/20 hover:text-white/70'
           }`}
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           {category.label}
