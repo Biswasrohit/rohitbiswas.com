@@ -8,7 +8,7 @@ const BOOST_AMOUNT = 0.06;
 const DECAY_FACTOR = 0.97;
 const FONT_SIZE = 13;
 
-const charSets = ['>', '>', '>', '-', '-', '-', '_', '_', '_'];
+const chars = ['>', '>', '-', '-', '_', '_', '>', '-', '_'];
 
 const AsciiHoverEffect = () => {
   const canvasRef = useRef(null);
@@ -17,10 +17,16 @@ const AsciiHoverEffect = () => {
   const hasHoverRef = useRef(true);
   const gridRef = useRef(null);
   const dimsRef = useRef({ cols: 0, rows: 0 });
+  const timeRef = useRef(0);
 
-  const getChar = useCallback((col, row) => {
-    const bandIndex = (row + Math.floor(col / 3)) % charSets.length;
-    return charSets[bandIndex];
+  // Character shifts based on time + cell opacity — active cells cycle faster
+  const getChar = useCallback((col, row, opacity, time) => {
+    // Base index from position
+    const base = (row * 3 + col) % chars.length;
+    // Time-based shift: cells with higher opacity cycle faster
+    const speed = 0.5 + opacity * 4;
+    const shift = Math.floor(time * speed + col * 0.3 + row * 0.7);
+    return chars[(base + shift) % chars.length];
   }, []);
 
   useEffect(() => {
@@ -69,6 +75,8 @@ const AsciiHoverEffect = () => {
       const h = canvas.height / dpr;
       const { cols, rows } = dimsRef.current;
       const grid = gridRef.current;
+      const time = timestamp * 0.001;
+      timeRef.current = time;
 
       if (!grid) {
         rafRef.current = requestAnimationFrame(draw);
@@ -78,9 +86,8 @@ const AsciiHoverEffect = () => {
       // Determine cursor position (phantom on mobile)
       let mx, my;
       if (!hasHoverRef.current) {
-        const t = timestamp * 0.001;
-        mx = w * 0.5 + Math.sin(t * 0.4) * w * 0.28;
-        my = h * 0.4 + Math.cos(t * 0.25) * h * 0.22;
+        mx = w * 0.5 + Math.sin(time * 0.4) * w * 0.28;
+        my = h * 0.4 + Math.cos(time * 0.25) * h * 0.22;
       } else {
         mx = mouseRef.current.x;
         my = mouseRef.current.y;
@@ -131,7 +138,7 @@ const AsciiHoverEffect = () => {
 
           const x = col * COL_GAP;
           const y = row * ROW_GAP;
-          const char = getChar(col, row);
+          const char = getChar(col, row, grid[idx], time);
           ctx.fillStyle = `rgba(255, 255, 255, ${grid[idx]})`;
           ctx.fillText(char, x, y);
         }
