@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -11,11 +9,11 @@ const Footer = () => {
   };
 
   const footerLinks = [
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'about', label: '/about' },
+    { id: 'skills', label: '/skills' },
+    { id: 'experience', label: '/exp' },
+    { id: 'projects', label: '/projects' },
+    { id: 'contact', label: '/contact' },
   ];
 
   const socialLinks = [
@@ -49,26 +47,28 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-sm">
+    <footer className="border-t border-white/6 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <motion.button
+            <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 hover:text-olive-500 dark:hover:text-olive-400 transition-colors"
-              whileHover={{ scale: 1.02 }}
+              className="font-mono text-lg text-white/80 hover:text-white transition-colors duration-200"
             >
-              Rohit<span className="text-olive-500">.</span>
-            </motion.button>
-            <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-sm">
-              Software Developer & CS Student at Columbia University, building innovative solutions at the intersection of software and hardware.
+              <span className="text-[#38bdf8]">~/</span>rohit
+            </button>
+            <p className="mt-3 font-mono text-xs text-white/30">
+              systems engineer · columbia cs
+            </p>
+            <p className="mt-1 font-mono text-xs text-white/20">
+              built with React + Vite
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+            <h4 className="font-mono text-xs text-white/30 uppercase tracking-widest mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -76,7 +76,7 @@ const Footer = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="text-zinc-600 dark:text-zinc-400 hover:text-olive-500 dark:hover:text-olive-400 transition-colors text-sm"
+                    className="font-mono text-sm text-white/40 hover:text-white/70 transition-colors duration-200"
                   >
                     {link.label}
                   </button>
@@ -87,7 +87,7 @@ const Footer = () => {
 
           {/* Social */}
           <div>
-            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+            <h4 className="font-mono text-xs text-white/30 uppercase tracking-widest mb-4">
               Connect
             </h4>
             <div className="flex gap-3">
@@ -97,7 +97,7 @@ const Footer = () => {
                   href={social.href}
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-olive-500 hover:text-white transition-all duration-300"
+                  className="p-2 text-white/40 hover:text-[#38bdf8] transition-colors duration-200"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -108,8 +108,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800 text-center">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <div className="mt-10 pt-8 border-t border-white/6 text-center">
+          <p className="font-mono text-xs text-white/28">
             &copy; {currentYear} Rohit Biswas. All rights reserved.
           </p>
         </div>
