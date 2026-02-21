@@ -9,6 +9,7 @@ const Experience = () => {
       <SectionHeader
         title="Work Experience"
         subtitle="My professional journey and the impact I've made"
+        index="03 · experience"
       />
 
       <div className="max-w-3xl mx-auto">
