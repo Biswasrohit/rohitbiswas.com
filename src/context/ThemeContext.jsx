@@ -10,8 +10,8 @@ const getInitialResolvedTheme = () => {
 };
 
 const getInitialTheme = () => {
-  if (typeof window === 'undefined') return 'system';
-  return localStorage.getItem('theme') || 'system';
+  if (typeof window === 'undefined') return 'dark';
+  return localStorage.getItem('theme') || 'dark';
 };
 
 export const ThemeProvider = ({ children }) => {
