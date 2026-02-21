@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import Button from './Button';
 
 const ContactForm = () => {
   const formRef = useRef();
@@ -14,14 +13,12 @@ const ContactForm = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // Check if EmailJS credentials are configured
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const templateIdAutoreply = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_AUTOREPLY;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        // Fallback: open mailto link
         const form = formRef.current;
         const name = form.user_name.value;
         const email = form.user_email.value;
@@ -33,12 +30,10 @@ const ContactForm = () => {
         return;
       }
 
-      // Send both emails: one to inbox, one auto-reply to sender
       const emailPromises = [
         emailjs.sendForm(serviceId, templateId, formRef.current, publicKey),
       ];
 
-      // Only send auto-reply if template ID is configured
       if (templateIdAutoreply) {
         emailPromises.push(
           emailjs.sendForm(serviceId, templateIdAutoreply, formRef.current, publicKey)
@@ -60,69 +55,69 @@ const ContactForm = () => {
     <motion.form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="space-y-6"
+      className="space-y-5"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hidden field for recipient email - required by EmailJS */}
+      {/* Hidden field for recipient email */}
       <input type="hidden" name="to_email" value="info.biswasrohit@gmail.com" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="user_name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-            Name
+          <label htmlFor="user_name" className="block font-mono text-xs text-white/50 uppercase tracking-wider mb-2">
+            name
           </label>
           <input
             type="text"
             id="user_name"
             name="user_name"
             required
-            className="input-field"
+            className="input-terminal"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <label htmlFor="user_email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-            Email
+          <label htmlFor="user_email" className="block font-mono text-xs text-white/50 uppercase tracking-wider mb-2">
+            email
           </label>
           <input
             type="email"
             id="user_email"
             name="user_email"
             required
-            className="input-field"
+            className="input-terminal"
             placeholder="your@email.com"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-          Subject
+        <label htmlFor="subject" className="block font-mono text-xs text-white/50 uppercase tracking-wider mb-2">
+          subject
         </label>
         <input
           type="text"
           id="subject"
           name="subject"
           required
-          className="input-field"
+          className="input-terminal"
           placeholder="What's this about?"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-          Message
+        <label htmlFor="message" className="block font-mono text-xs text-white/50 uppercase tracking-wider mb-2">
+          message
         </label>
         <textarea
           id="message"
           name="message"
           required
           rows={5}
-          className="input-field resize-none"
+          className="input-terminal resize-none"
           placeholder="Your message..."
         />
       </div>
@@ -131,35 +126,35 @@ const ContactForm = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`p-4 rounded-xl text-sm ${
-            status.type === 'success'
-              ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-              : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
-          }`}
+          className="font-mono text-sm p-3 rounded-md"
+          style={{
+            background: status.type === 'success' ? 'rgba(132,204,22,0.08)' : 'rgba(217,70,239,0.08)',
+            border: `1px solid ${status.type === 'success' ? 'rgba(132,204,22,0.25)' : 'rgba(217,70,239,0.25)'}`,
+            color: status.type === 'success' ? '#84cc16' : '#d946ef',
+          }}
         >
+          <span className="mr-2">{status.type === 'success' ? '>' : '!'}</span>
           {status.message}
         </motion.div>
       )}
 
-      <Button
+      <button
         type="submit"
-        variant="primary"
-        size="lg"
         disabled={isSubmitting}
-        className="w-full"
+        className="btn-glow w-full justify-center py-3 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? (
           <span className="flex items-center gap-2">
-            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
             </svg>
-            Sending...
+            sending...
           </span>
         ) : (
-          'Send Message'
+          '$ send_message'
         )}
-      </Button>
+      </button>
     </motion.form>
   );
 };
