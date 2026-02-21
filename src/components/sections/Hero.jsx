@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
-import Button from '../ui/Button';
-import { useTheme } from '../../hooks/useTheme';
+import AnimatedBackground from '../effects/AnimatedBackground';
+import { useTypewriter } from '../../hooks/useTypewriter';
 
 const Hero = () => {
-  const { isDark } = useTheme();
+  const typedText = useTypewriter(
+    ['Systems Engineer', 'CS @ Columbia', 'Full Stack Builder', 'Hackathon Winner'],
+    75,
+    2200
+  );
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -13,258 +17,124 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zinc-50 dark:bg-zinc-950">
-      {/* Noise texture overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* Vignette effect */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: isDark
-            ? 'radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(9,9,11,0.5) 100%)'
-            : 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(250,250,249,0.7) 100%)',
-        }}
-      />
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated gradient orb background */}
+      <AnimatedBackground />
 
       <div className="relative z-10 section-container flex flex-col items-center text-center pt-20">
-        {/* Profile Image with Aurora Ring */}
+        {/* Pill badge */}
         <motion.div
-          className="relative mb-8"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          className="mb-8 px-4 py-2 rounded-full border border-white/12 bg-white/4 font-mono text-xs text-white/50 tracking-wider"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Aurora Blob Container - centered on profile pic */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            {/* Outer blob */}
-            <motion.div
-              className="absolute w-100 h-100 md:w-125 md:h-125"
-              style={{
-                background: isDark
-                  ? 'conic-gradient(from 0deg, #6B8E23, #4a6b1a, #8fbc3b, #3d5a14, #a8c256, #2d4410, #6B8E23)'
-                  : 'conic-gradient(from 0deg, #6B8E23, #8fbc3b, #b7c089, #9da865, #d3d9b5, #6B8E23)',
-                filter: 'blur(35px)',
-                opacity: isDark ? 0.9 : 0.7,
-              }}
-              animate={{
-                borderRadius: [
-                  '60% 40% 30% 70% / 60% 30% 70% 40%',
-                  '30% 60% 70% 40% / 50% 60% 30% 60%',
-                  '55% 45% 60% 40% / 35% 65% 35% 65%',
-                  '40% 60% 35% 65% / 65% 40% 60% 35%',
-                  '60% 40% 30% 70% / 60% 30% 70% 40%',
-                ],
-                rotate: [0, 120, 240, 360],
-                scale: [1, 1.05, 0.95, 1.02, 1],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-
-            {/* Middle blob - counter-rotates for organic feel */}
-            <motion.div
-              className="absolute w-80 h-80 md:w-100 md:h-100"
-              style={{
-                background: isDark
-                  ? 'conic-gradient(from 180deg, #4a6b1a, #6B8E23, #8fbc3b, #6B8E23, #3d5a14, #6B8E23, #4a6b1a)'
-                  : 'conic-gradient(from 180deg, #9da865, #6B8E23, #b7c089, #8fbc3b, #d3d9b5, #6B8E23, #9da865)',
-                filter: 'blur(20px)',
-                opacity: isDark ? 0.95 : 0.75,
-              }}
-              animate={{
-                borderRadius: [
-                  '40% 60% 65% 35% / 50% 35% 65% 50%',
-                  '65% 35% 40% 60% / 35% 55% 45% 65%',
-                  '35% 65% 55% 45% / 60% 40% 55% 45%',
-                  '55% 45% 35% 65% / 45% 65% 40% 60%',
-                  '40% 60% 65% 35% / 50% 35% 65% 50%',
-                ],
-                rotate: [0, -90, -180, -270, -360],
-                scale: [0.95, 1.02, 0.98, 1.04, 0.95],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-
-            {/* Inner dark cutout blob */}
-            <motion.div
-              className="absolute w-52 h-52 md:w-64 md:h-64 bg-zinc-50 dark:bg-zinc-950"
-              style={{
-                filter: 'blur(15px)',
-              }}
-              animate={{
-                borderRadius: [
-                  '50% 50% 45% 55% / 55% 45% 55% 45%',
-                  '45% 55% 50% 50% / 50% 55% 45% 50%',
-                  '55% 45% 55% 45% / 45% 50% 50% 55%',
-                  '50% 50% 45% 55% / 55% 45% 55% 45%',
-                ],
-                scale: [1, 1.03, 0.97, 1],
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-
-            {/* Sharp inner cutout */}
-            <motion.div
-              className="absolute w-48 h-48 md:w-60 md:h-60 bg-zinc-50 dark:bg-zinc-950"
-              animate={{
-                borderRadius: [
-                  '50% 50% 48% 52% / 52% 48% 52% 48%',
-                  '48% 52% 50% 50% / 50% 52% 48% 50%',
-                  '52% 48% 52% 48% / 48% 50% 50% 52%',
-                  '50% 50% 48% 52% / 52% 48% 52% 48%',
-                ],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-          </div>
-
-          {/* Profile Picture */}
-          <div className="relative z-10 w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white dark:border-zinc-800 shadow-2xl">
-            <img
-              src="/assets/profile-pic.png"
-              alt="Rohit Biswas"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Decorative ring */}
-          <motion.div
-            className="absolute inset-0 border-2 border-olive-500/30 z-20"
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.5, 0.2, 0.5],
-              borderRadius: [
-                '60% 40% 50% 50% / 50% 60% 40% 50%',
-                '50% 50% 40% 60% / 60% 50% 50% 40%',
-                '60% 40% 50% 50% / 50% 60% 40% 50%',
-              ],
-            }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          // columbia university &middot; cs + systems
         </motion.div>
 
-        {/* Name */}
+        {/* Large display name */}
         <motion.h1
-          className="relative z-20 text-4xl md:text-6xl lg:text-7xl font-bold text-zinc-900 dark:text-zinc-100 mb-4"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6"
+          style={{ fontFamily: "'Syne', system-ui, sans-serif", letterSpacing: '-0.03em', lineHeight: 1.05 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
         >
-          Rohit <span className="text-gradient drop-shadow-[0_0_20px_rgba(255,255,255,1)] dark:drop-shadow-[0_0_20px_rgba(0,0,0,1)]">Biswas</span>
+          ROHIT{' '}
+          <span className="text-gradient-cyber">BISWAS</span>
         </motion.h1>
 
-        {/* Title */}
-        <motion.p
-          className="relative z-20 text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+        {/* Typewriter subtitle */}
+        <motion.div
+          className="font-mono text-lg md:text-xl text-white/70 mb-10 h-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
         >
-          Software Developer & CS Student at Columbia
-        </motion.p>
+          <span className="text-[#38bdf8]/60 mr-2">&gt;</span>
+          {typedText}
+          <span className="inline-block w-0.5 h-5 bg-[#38bdf8] ml-1 align-middle animate-cursor-blink" />
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
-          className="relative z-20 flex flex-col sm:flex-row gap-4 mb-12"
+          className="flex flex-col sm:flex-row gap-4 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
         >
-          <Button
+          <a
             href="/assets/Rohit Biswas Resume.pdf"
             download="Rohit_Biswas_Resume.pdf"
-            variant="primary"
-            size="lg"
-            icon={
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            }
+            className="btn-glow"
           >
-            Download Resume
-          </Button>
-          <Button
+            <span className="text-white/40 mr-1">$</span> download resume
+          </a>
+          <button
             onClick={scrollToContact}
-            variant="outline"
-            size="lg"
-            icon={
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            }
+            className="btn-ghost-dark"
           >
-            Get in Touch
-          </Button>
+            <span className="text-white/30 mr-1">//</span> get in touch
+          </button>
         </motion.div>
 
         {/* Social Links */}
         <motion.div
-          className="relative z-20 flex gap-4"
+          className="flex gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
         >
-          <a
-            href="https://github.com/Biswasrohit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-olive-500 hover:text-white transition-all duration-300"
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z" clipRule="evenodd"/>
-            </svg>
-          </a>
-          <a
-            href="https://linkedin.com/in/rohitbiswas3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-olive-500 hover:text-white transition-all duration-300"
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-          <a
-            href="mailto:info.biswasrohit@gmail.com"
-            className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-olive-500 hover:text-white transition-all duration-300"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </a>
+          {[
+            {
+              href: 'https://github.com/Biswasrohit',
+              label: 'GitHub',
+              icon: (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z" clipRule="evenodd"/>
+                </svg>
+              ),
+            },
+            {
+              href: 'https://linkedin.com/in/rohitbiswas3',
+              label: 'LinkedIn',
+              icon: (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              ),
+            },
+            {
+              href: 'mailto:info.biswasrohit@gmail.com',
+              label: 'Email',
+              icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              ),
+            },
+          ].map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith('mailto') ? undefined : '_blank'}
+              rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+              className="p-3 rounded-full border border-white/10 text-white/40 hover:text-white/90 hover:bg-[#38bdf8]/10 hover:border-[#38bdf8]/30 transition-colors duration-200"
+              aria-label={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
         </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-xs text-white/20"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ delay: 1, duration: 1.5, repeat: Infinity }}
+          animate={{ opacity: 1, y: [0, 6, 0] }}
+          transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
         >
-          <svg className="w-6 h-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          scroll()
         </motion.div>
       </div>
     </section>
