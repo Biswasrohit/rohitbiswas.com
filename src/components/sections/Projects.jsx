@@ -25,7 +25,7 @@ const Projects = () => {
       />
 
       <motion.div
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
         layout
       >
         <AnimatePresence mode="popLayout">
@@ -33,6 +33,7 @@ const Projects = () => {
             <motion.div
               key={project.id}
               layout
+              className="h-full"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}

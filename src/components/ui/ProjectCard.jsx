@@ -5,6 +5,7 @@ const ProjectCard = ({ project, index = 0 }) => {
 
   return (
     <motion.div
+      className="h-full"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -26,9 +27,10 @@ const ProjectCard = ({ project, index = 0 }) => {
             {award && (
               <div className="absolute top-3 right-3 px-3 py-1 font-mono text-xs rounded-sm"
                 style={{
-                  background: 'rgba(56,189,248,0.15)',
-                  border: '1px solid rgba(56,189,248,0.3)',
+                  background: 'rgba(0,0,0,0.75)',
+                  border: '1px solid rgba(56,189,248,0.5)',
                   color: '#38bdf8',
+                  backdropFilter: 'blur(8px)',
                 }}
               >
                 {award}
@@ -41,9 +43,10 @@ const ProjectCard = ({ project, index = 0 }) => {
             {award && (
               <div className="absolute top-3 right-3 px-3 py-1 font-mono text-xs rounded-sm"
                 style={{
-                  background: 'rgba(56,189,248,0.15)',
-                  border: '1px solid rgba(56,189,248,0.3)',
+                  background: 'rgba(0,0,0,0.75)',
+                  border: '1px solid rgba(56,189,248,0.5)',
                   color: '#38bdf8',
+                  backdropFilter: 'blur(8px)',
                 }}
               >
                 {award}

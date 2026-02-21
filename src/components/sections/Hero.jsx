@@ -4,7 +4,7 @@ import { useTypewriter } from '../../hooks/useTypewriter';
 
 const Hero = () => {
   const typedText = useTypewriter(
-    ['Software Engineer', 'CS @ Columbia', 'Full Stack Builder', 'Hackathon Winner'],
+    ['Systems Engineer', 'CS @ Columbia', 'Full Stack Builder', 'Hackathon Winner'],
     75,
     2200
   );

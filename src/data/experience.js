@@ -13,7 +13,7 @@ export const experience = [
   },
   {
     id: 2,
-    role: 'Software Engineer',
+    role: 'Systems Engineer',
     company: 'Columbia Technology Ventures',
     location: 'New York, NY',
     period: 'Oct 2025 - Present',
@@ -26,8 +26,8 @@ export const experience = [
   },
   {
     id: 3,
-    role: 'Security Engineering Intern',
-    company: 'New York City Housing Authority',
+    role: 'Cybersecurity Intern',
+    company: 'NYCHA',
     location: 'New York, NY',
     period: 'Jun 2025 - Aug 2025',
     current: false,
@@ -39,7 +39,7 @@ export const experience = [
   },
   {
     id: 4,
-    role: 'Software Engineer',
+    role: 'IT Engineer',
     company: 'Fordham University',
     location: 'Bronx, NY',
     period: 'May 2023 - Jun 2025',

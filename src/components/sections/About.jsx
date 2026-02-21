@@ -5,7 +5,7 @@ const terminalLines = [
   { type: 'command', text: '$ cat about.txt' },
   { type: 'blank' },
   { key: 'name', value: '"Rohit Biswas"', tokenType: 'string' },
-  { key: 'role', value: '"Software Engineer · CS Student"', tokenType: 'string' },
+  { key: 'role', value: '"Systems Engineer · CS Student"', tokenType: 'string' },
   { key: 'location', value: '"New York, NY"', tokenType: 'string' },
   { key: 'school', value: '"Columbia University (B.S. CS, May 2027)"', tokenType: 'string' },
   { key: 'prev', value: '"Fordham University (B.S. Engineering Physics)"', tokenType: 'string' },
