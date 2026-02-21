@@ -5,14 +5,14 @@ const terminalLines = [
   { type: 'command', text: '$ cat about.txt' },
   { type: 'blank' },
   { key: 'name', value: '"Rohit Biswas"', tokenType: 'string' },
-  { key: 'role', value: '"Systems Engineer · CS Student"', tokenType: 'string' },
+  { key: 'role', value: '"Software Engineer · CS Student"', tokenType: 'string' },
   { key: 'location', value: '"New York, NY"', tokenType: 'string' },
   { key: 'school', value: '"Columbia University (B.S. CS, May 2027)"', tokenType: 'string' },
   { key: 'prev', value: '"Fordham University (B.S. Engineering Physics)"', tokenType: 'string' },
   { type: 'blank' },
   { key: 'passion', value: '["software dev", "hardware", "cybersecurity"]', tokenType: 'array' },
-  { key: 'wins', value: '["MLH Award @ DivHacks", "Winner @ MakeCU"]', tokenType: 'array' },
-  { key: 'stats', value: '{ projects: "10+", years_coding: "4+", hackathon_wins: 2 }', tokenType: 'object' },
+  { key: 'wins', value: '["DevFest 2026 Winner (YC Interview)", "MLH Award @ DivHacks", "3rd Place @ MakeCU"]', tokenType: 'array' },
+  { key: 'stats', value: '{ projects: "10+", years_coding: "4+", hackathon_wins: 3 }', tokenType: 'object' },
   { type: 'blank' },
   { key: 'bio', value: '"""', tokenType: 'string', multiStart: true },
   { type: 'bio', text: '  CS student at Columbia with a background in Engineering Physics.' },
@@ -24,7 +24,7 @@ const terminalLines = [
 const highlights = [
   { label: 'Years Coding', value: '4+' },
   { label: 'Projects Built', value: '10+' },
-  { label: 'Hackathon Wins', value: '2' },
+  { label: 'Hackathon Wins', value: '3' },
 ];
 
 const About = () => {

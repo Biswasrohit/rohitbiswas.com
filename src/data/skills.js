@@ -3,19 +3,25 @@ export const skillCategories = [
     id: 'languages',
     title: 'Languages',
     icon: '💻',
-    skills: ['C', 'C++', 'Python', 'Java', 'SQL (PostgreSQL)', 'JavaScript', 'HTML/CSS'],
+    skills: ['Java', 'Python', 'JavaScript', 'TypeScript', 'C', 'C++', 'SQL', 'HTML/CSS', 'Bash', 'PowerShell'],
   },
   {
     id: 'frameworks',
-    title: 'Frameworks & Libraries',
+    title: 'Frameworks & APIs',
     icon: '🛠️',
-    skills: ['React', 'Node.js', 'Flask', 'FastAPI', 'OpenCV', 'NumPy', 'pandas', 'Matplotlib'],
+    skills: ['React', 'Next.js', 'Node.js', 'Express', 'FastAPI', 'Flask', 'REST APIs', 'WebSockets'],
   },
   {
-    id: 'tools',
-    title: 'Tools',
+    id: 'infrastructure',
+    title: 'Infrastructure',
     icon: '⚙️',
-    skills: ['Git', 'Docker', 'Kubernetes', 'Bash', 'PowerShell', 'Linux/UNIX', 'Splunk', 'Veracode', 'Supabase'],
+    skills: ['Linux/UNIX', 'Docker', 'Kubernetes', 'Git', 'CI/CD', 'PostgreSQL', 'Splunk', 'Microservices'],
+  },
+  {
+    id: 'specialties',
+    title: 'Specialties',
+    icon: '🔧',
+    skills: ['OpenCV', 'Arduino', 'Raspberry Pi', 'System Design', 'Distributed Systems'],
   },
 ];
 

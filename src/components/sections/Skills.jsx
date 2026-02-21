@@ -7,7 +7,8 @@ import { skillCategories } from '../../data/skills';
 const tabConfig = {
   languages: { file: 'languages.ts', tokenType: 'keyword' },
   frameworks: { file: 'frameworks.ts', tokenType: 'fn' },
-  tools: { file: 'tools.ts', tokenType: 'number' },
+  infrastructure: { file: 'infra.ts', tokenType: 'number' },
+  specialties: { file: 'specialties.ts', tokenType: 'type' },
 };
 
 const Skills = () => {
@@ -49,7 +50,7 @@ const Skills = () => {
                   <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#38bdf8]" />
                 )}
                 <span className="text-white/20 mr-1.5">
-                  {category.id === 'languages' ? '◆' : category.id === 'frameworks' ? '◇' : '○'}
+                  {category.id === 'languages' ? '◆' : category.id === 'frameworks' ? '◇' : category.id === 'infrastructure' ? '○' : '▸'}
                 </span>
                 {config.file}
               </button>
