@@ -9,12 +9,16 @@ const GlassCard = ({
   ...props
 }) => {
   const variants = {
-    default: 'glass-card',
-    solid: 'backdrop-blur-xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl shadow-lg',
-    transparent: 'backdrop-blur-md bg-white/30 dark:bg-zinc-900/30 border border-white/20 dark:border-white/10 rounded-2xl',
+    default: 'dark-panel',
+    elevated: 'dark-panel-elevated',
+    terminal: 'terminal-chrome',
+    solid: 'dark-panel-elevated',
+    transparent: 'dark-panel',
   };
 
-  const hoverEffects = hover ? 'hover:shadow-xl hover:shadow-olive-500/10 hover:border-olive-500/30 transition-all duration-300' : '';
+  const hoverEffects = hover
+    ? 'hover:border-white/15 transition-colors duration-300'
+    : '';
 
   const Component = animate ? motion.div : 'div';
   const animationProps = animate ? {
@@ -26,7 +30,7 @@ const GlassCard = ({
 
   return (
     <Component
-      className={`${variants[variant]} ${hoverEffects} ${className}`}
+      className={`${variants[variant] || variants.default} ${hoverEffects} ${className}`}
       {...animationProps}
       {...props}
     >
