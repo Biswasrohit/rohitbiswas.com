@@ -181,16 +181,27 @@
   }
 
   /* Legacy compatibility aliases */
-  .glass { @apply dark-panel; }
-  .glass-card { @apply dark-panel; }
+  .glass {
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+  }
+  .glass-card {
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+  }
   .glass-nav {
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
-  .text-gradient { @apply text-gradient-cyber; }
-  .btn-primary { @apply btn-glow; }
-  .btn-outline { @apply btn-ghost-dark; }
+  .text-gradient {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   .btn-ghost {
     display: inline-flex;
     align-items: center;
@@ -220,7 +231,25 @@
     background: rgba(56, 189, 248, 0.15);
     border-color: rgba(56, 189, 248, 0.4);
   }
-  .input-field { @apply input-terminal; }
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.10);
+  }
+  .input-field::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+  }
 }
 
 /* ===== Base Styles ===== */
