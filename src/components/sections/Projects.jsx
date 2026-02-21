@@ -15,6 +15,7 @@ const Projects = () => {
       <SectionHeader
         title="Projects"
         subtitle="A selection of projects I've built, from web apps to robots"
+        index="05 · projects"
       />
 
       <ProjectFilter
@@ -45,7 +46,7 @@ const Projects = () => {
 
       {filteredProjects.length === 0 && (
         <motion.p
-          className="text-center text-zinc-500 dark:text-zinc-400 py-12"
+          className="text-center font-mono text-white/40 py-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
