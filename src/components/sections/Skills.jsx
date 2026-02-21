@@ -1,46 +1,87 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeader from '../ui/SectionHeader';
-import GlassCard from '../ui/GlassCard';
 import SkillBadge from '../ui/SkillBadge';
 import { skillCategories } from '../../data/skills';
 
+const tabConfig = {
+  languages: { file: 'languages.ts', tokenType: 'keyword' },
+  frameworks: { file: 'frameworks.ts', tokenType: 'fn' },
+  tools: { file: 'tools.ts', tokenType: 'number' },
+};
+
 const Skills = () => {
+  const [activeTab, setActiveTab] = useState(skillCategories[0]?.id || 'languages');
+  const activeCategory = skillCategories.find((c) => c.id === activeTab);
+
   return (
-    <section id="skills" className="section-container bg-zinc-100/50 dark:bg-zinc-900/50">
+    <section id="skills" className="section-container" style={{ background: '#060606' }}>
       <SectionHeader
         title="Skills & Technologies"
         subtitle="The tools and technologies I use to bring ideas to life"
+        index="02 · skills"
       />
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {skillCategories.map((category, categoryIndex) => (
-          <motion.div
-            key={category.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-          >
-            <GlassCard className="p-6 h-full" animate={false}>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-2xl">{category.icon}</span>
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                  {category.title}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
+      <motion.div
+        className="dark-panel overflow-hidden max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Tab bar */}
+        <div className="flex border-b border-white/8 bg-[#0d0d0d]">
+          {skillCategories.map((category) => {
+            const config = tabConfig[category.id] || { file: `${category.id}.ts`, tokenType: 'fn' };
+            const isActive = activeTab === category.id;
+
+            return (
+              <button
+                key={category.id}
+                onClick={() => setActiveTab(category.id)}
+                className={`px-5 py-3 font-mono text-sm transition-colors duration-200 relative ${
+                  isActive
+                    ? 'text-white bg-black'
+                    : 'text-white/40 hover:text-white/60 hover:bg-white/3'
+                }`}
+              >
+                {isActive && (
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#38bdf8]" />
+                )}
+                <span className="text-white/20 mr-1.5">
+                  {category.id === 'languages' ? '◆' : category.id === 'frameworks' ? '◇' : '○'}
+                </span>
+                {config.file}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Panel body */}
+        <div className="p-6 min-h-[160px]">
+          <AnimatePresence mode="wait">
+            {activeCategory && (
+              <motion.div
+                key={activeCategory.id}
+                className="flex flex-wrap gap-2"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+              >
+                {activeCategory.skills.map((skill, skillIndex) => (
                   <SkillBadge
                     key={skill}
                     skill={skill}
                     index={skillIndex}
+                    tokenType={tabConfig[activeCategory.id]?.tokenType || 'fn'}
                   />
                 ))}
-              </div>
-            </GlassCard>
-          </motion.div>
-        ))}
-      </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </section>
   );
 };
