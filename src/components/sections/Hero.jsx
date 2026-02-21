@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import AnimatedBackground from '../effects/AnimatedBackground';
+import AsciiHoverEffect from '../effects/AsciiHoverEffect';
 import { useTypewriter } from '../../hooks/useTypewriter';
 
 const Hero = () => {
@@ -20,6 +21,9 @@ const Hero = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated gradient orb background */}
       <AnimatedBackground />
+
+      {/* ASCII hover reveal effect */}
+      <AsciiHoverEffect />
 
       <div className="relative z-10 section-container flex flex-col items-center text-center pt-20">
         {/* Pill badge */}
