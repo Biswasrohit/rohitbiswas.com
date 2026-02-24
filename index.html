@@ -4,16 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Theme initialization (prevents flash) -->
-    <script>
-      (function() {
-        try {
-          var t = localStorage.getItem('theme') || 'dark';
-          var dark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.classList.toggle('dark', dark);
-        } catch {}
-      })();
-    </script>
+    <!-- Always dark mode -->
+    <script>document.documentElement.classList.add('dark');</script>
 
     <!-- Meta tags -->
     <title>Rohit Biswas | Systems Engineer</title>
