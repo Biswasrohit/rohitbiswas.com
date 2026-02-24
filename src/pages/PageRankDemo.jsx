@@ -11,14 +11,14 @@ const PageRankDemo = () => {
   const { theme, toggleTheme, isDark } = useTheme();
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-950">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass-nav border-b border-zinc-200/50 dark:border-zinc-800/50">
+      <nav className="sticky top-0 z-50 glass-nav border-b border-zinc-800/50">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           {/* Back to portfolio */}
           <Link
             to="/"
-            className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-olive-500 dark:hover:text-olive-400 transition-colors"
+            className="flex items-center gap-2 text-zinc-400 hover:text-olive-400 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -28,28 +28,11 @@ const PageRankDemo = () => {
 
           {/* Right side actions */}
           <div className="flex items-center gap-3">
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-olive-500 dark:hover:text-olive-400 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {isDark ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              )}
-            </button>
-
             {/* Download PDF */}
             <a
               href="/assets/PageRank_MarkovChains_RohitBiswas.pdf"
               download
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -84,35 +67,35 @@ const PageRankDemo = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4">
               What is PageRank?
             </h2>
 
-            <div className="prose prose-zinc dark:prose-invert max-w-none space-y-4">
-              <p className="text-zinc-600 dark:text-zinc-400">
+            <div className="prose prose-invert max-w-none space-y-4">
+              <p className="text-zinc-400">
                 PageRank is the algorithm that revolutionized web search. Developed by Larry Page and
                 Sergey Brin at Stanford in 1996, it was the foundation of Google's search engine and
                 fundamentally changed how we find information online.
               </p>
 
-              <p className="text-zinc-600 dark:text-zinc-400">
-                The key insight is elegantly simple: <strong className="text-zinc-800 dark:text-zinc-200">a page is important if important pages link to it</strong>.
+              <p className="text-zinc-400">
+                The key insight is elegantly simple: <strong className="text-zinc-200">a page is important if important pages link to it</strong>.
                 This circular definition is solved using linear algebra—specifically, finding the
                 stationary distribution of a Markov chain represented by the web's link structure.
               </p>
 
-              <p className="text-zinc-600 dark:text-zinc-400">
+              <p className="text-zinc-400">
                 The "random surfer" model provides intuition: imagine someone randomly clicking links
                 on the web. The PageRank of a page is the probability of finding this surfer on that
                 page at any given time. The damping factor (α = 0.85) accounts for the surfer occasionally
                 jumping to a random page instead of following links.
               </p>
 
-              <div className="bg-olive-50 dark:bg-olive-900/20 border border-olive-200 dark:border-olive-800 rounded-lg p-4 mt-6">
-                <h3 className="font-semibold text-olive-800 dark:text-olive-300 mb-2">
+              <div className="bg-olive-900/20 border border-olive-800 rounded-lg p-4 mt-6">
+                <h3 className="font-semibold text-olive-300 mb-2">
                   About This Project
                 </h3>
-                <p className="text-sm text-olive-700 dark:text-olive-400">
+                <p className="text-sm text-olive-400">
                   This interactive visualization was built as part of my research paper for MATH 2010
                   (Applied Linear Algebra). It demonstrates the mathematical concepts behind PageRank
                   including power iteration, Markov chains, and the Perron-Frobenius theorem.
@@ -121,13 +104,13 @@ const PageRankDemo = () => {
             </div>
 
             {/* PDF Preview */}
-            <div className="mt-8 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800">
+            <div className="mt-8 rounded-xl overflow-hidden border border-zinc-700 bg-zinc-800">
               <object
                 data="/assets/PageRank_MarkovChains_RohitBiswas.pdf"
                 type="application/pdf"
                 className="w-full h-125"
               >
-                <div className="flex items-center justify-center h-50 text-zinc-500 dark:text-zinc-400 text-sm">
+                <div className="flex items-center justify-center h-50 text-zinc-400 text-sm">
                   <p>PDF preview not available in your browser.
                     <a href="/assets/PageRank_MarkovChains_RohitBiswas.pdf" download className="text-olive-500 hover:underline ml-1">Download instead</a>
                   </p>
@@ -149,7 +132,7 @@ const PageRankDemo = () => {
 
               <Link
                 to="/#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-olive-500 hover:text-olive-500 transition-colors font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-zinc-700 text-zinc-300 hover:border-olive-500 hover:text-olive-500 transition-colors font-medium"
               >
                 View More Projects
               </Link>
@@ -159,8 +142,8 @@ const PageRankDemo = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
+      <footer className="border-t border-zinc-800 py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center text-sm text-zinc-400">
           <p>Built with React, React Flow, and Framer Motion</p>
           <p className="mt-1">
             © {new Date().getFullYear()} Rohit Biswas •

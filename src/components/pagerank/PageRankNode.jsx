@@ -34,13 +34,13 @@ const PageRankNode = memo(({ data, selected }) => {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-white dark:!border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
         id="target-top"
       />
       <Handle
         type="target"
         position={Position.Left}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-white dark:!border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
         id="target-left"
       />
 
@@ -49,7 +49,7 @@ const PageRankNode = memo(({ data, selected }) => {
         className={`
           rounded-full flex flex-col items-center justify-center
           shadow-lg cursor-pointer
-          ${selected ? 'ring-4 ring-olive-400 ring-offset-2 dark:ring-offset-zinc-900' : ''}
+          ${selected ? 'ring-4 ring-olive-400 ring-offset-2 ring-offset-zinc-900' : ''}
         `}
         style={{
           width: '100%',
@@ -71,20 +71,20 @@ const PageRankNode = memo(({ data, selected }) => {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-white dark:!border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
         id="source-bottom"
       />
       <Handle
         type="source"
         position={Position.Right}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-white dark:!border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
         id="source-right"
       />
 
       {/* Dangling node indicator */}
       {isDangling && (
         <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-          <span className="text-[10px] bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 px-1.5 py-0.5 rounded-full border border-yellow-500/30">
+          <span className="text-[10px] bg-yellow-500/20 text-yellow-400 px-1.5 py-0.5 rounded-full border border-yellow-500/30">
             dangling
           </span>
         </div>

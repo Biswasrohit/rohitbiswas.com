@@ -24,7 +24,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
 
   // Get color for matrix cell based on value
   const getCellColor = (value) => {
-    if (value === 0) return 'bg-zinc-100 dark:bg-zinc-800';
+    if (value === 0) return 'bg-zinc-800';
     const intensity = Math.min(value * 2, 1); // Scale for visibility
     return `bg-olive-500/${Math.round(intensity * 60 + 10)}`;
   };
@@ -36,7 +36,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
         onClick={onToggle}
         className="w-full flex items-center justify-between text-left"
       >
-        <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+        <h3 className="font-semibold text-zinc-100">
           Google Matrix (G)
         </h3>
         <motion.svg
@@ -61,21 +61,21 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
           >
             <div className="mt-4">
               {/* Formula */}
-              <div className="mb-4 p-3 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-lg">
-                <p className="text-sm font-mono text-zinc-700 dark:text-zinc-300">
+              <div className="mb-4 p-3 bg-zinc-800/80 rounded-lg">
+                <p className="text-sm font-mono text-zinc-300">
                   G = αH' + (1-α)(1/n)11<sup>T</sup>
                 </p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                <p className="text-xs text-zinc-400 mt-1">
                   α = {alpha.toFixed(2)}, n = {nodes.length}
                 </p>
               </div>
 
               {nodes.length === 0 ? (
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center py-4">
+                <p className="text-sm text-zinc-400 text-center py-4">
                   Add nodes to see the matrix
                 </p>
               ) : nodes.length > 8 ? (
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center py-4">
+                <p className="text-sm text-zinc-400 text-center py-4">
                   Matrix too large to display (max 8 nodes)
                 </p>
               ) : (
@@ -84,9 +84,9 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
                   <table className="w-full text-xs">
                     <thead>
                       <tr>
-                        <th className="p-1 text-zinc-500 dark:text-zinc-400"></th>
+                        <th className="p-1 text-zinc-400"></th>
                         {nodeIds.map(id => (
-                          <th key={id} className="p-1 text-center text-zinc-600 dark:text-zinc-400 font-medium">
+                          <th key={id} className="p-1 text-center text-zinc-400 font-medium">
                             {nodes.find(n => n.id === id)?.label || id}
                           </th>
                         ))}
@@ -95,7 +95,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
                     <tbody>
                       {G.map((row, i) => (
                         <tr key={nodeIds[i]}>
-                          <td className="p-1 text-zinc-600 dark:text-zinc-400 font-medium">
+                          <td className="p-1 text-zinc-400 font-medium">
                             {nodes.find(n => n.id === nodeIds[i])?.label || nodeIds[i]}
                           </td>
                           {row.map((value, j) => (
@@ -103,7 +103,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
                               key={`${i}-${j}`}
                               className={`p-1 text-center font-mono ${getCellColor(value)} rounded`}
                             >
-                              <span className={value > 0 ? 'text-zinc-800 dark:text-zinc-200' : 'text-zinc-400 dark:text-zinc-600'}>
+                              <span className={value > 0 ? 'text-zinc-200' : 'text-zinc-600'}>
                                 {formatMatrixValue(value, 2)}
                               </span>
                             </td>
@@ -116,7 +116,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
               )}
 
               {/* Legend */}
-              <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
+              <div className="mt-4 text-xs text-zinc-400">
                 <p className="mb-1"><strong>Reading the matrix:</strong></p>
                 <p>G[i][j] = probability of going from node j to node i</p>
                 <p className="mt-1">Columns sum to 1 (stochastic matrix)</p>

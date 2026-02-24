@@ -31,10 +31,10 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
   if (nodes.length === 0) {
     return (
       <GlassCard className="p-4" animate={false}>
-        <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+        <h3 className="font-semibold text-zinc-100 mb-3">
           PageRank Values
         </h3>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center py-4">
+        <p className="text-sm text-zinc-400 text-center py-4">
           Add nodes to see rankings
         </p>
       </GlassCard>
@@ -43,7 +43,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
 
   return (
     <GlassCard className="p-4" animate={false}>
-      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+      <h3 className="font-semibold text-zinc-100 mb-3">
         PageRank Values
       </h3>
 
@@ -73,25 +73,25 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
               <div className="relative flex items-center justify-between p-2 rounded-md">
                 <div className="flex items-center gap-2">
                   {/* Rank position */}
-                  <span className="w-5 h-5 flex items-center justify-center text-xs font-bold text-olive-600 dark:text-olive-400 bg-olive-100 dark:bg-olive-900/50 rounded-full">
+                  <span className="w-5 h-5 flex items-center justify-center text-xs font-bold text-olive-400 bg-olive-900/50 rounded-full">
                     {index + 1}
                   </span>
 
                   {/* Node label */}
-                  <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                  <span className="font-medium text-zinc-200">
                     {node.label}
                   </span>
 
                   {/* Dangling indicator */}
                   {node.isDangling && (
-                    <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-1.5 py-0.5 rounded">
+                    <span className="text-xs bg-yellow-900/30 text-yellow-400 px-1.5 py-0.5 rounded">
                       dangling
                     </span>
                   )}
                 </div>
 
                 {/* Rank value */}
-                <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">
+                <span className="font-mono text-sm text-zinc-300">
                   {node.rank.toFixed(4)}
                 </span>
               </div>
@@ -101,10 +101,10 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
       </div>
 
       {/* Sum verification */}
-      <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-700">
+      <div className="mt-3 pt-3 border-t border-zinc-700">
         <div className="flex justify-between text-sm">
-          <span className="text-zinc-500 dark:text-zinc-400">Sum</span>
-          <span className="font-mono text-zinc-600 dark:text-zinc-300">
+          <span className="text-zinc-400">Sum</span>
+          <span className="font-mono text-zinc-300">
             {Array.from(ranks.values()).reduce((a, b) => a + b, 0).toFixed(4)}
           </span>
         </div>

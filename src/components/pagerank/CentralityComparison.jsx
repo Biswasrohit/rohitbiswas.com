@@ -68,7 +68,7 @@ const CentralityComparison = ({
 
   return (
     <GlassCard className="p-4" animate={false}>
-      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+      <h3 className="font-semibold text-zinc-100 mb-3">
         Centrality Comparison
       </h3>
 
@@ -81,15 +81,15 @@ const CentralityComparison = ({
             className={`w-full text-left p-2 rounded-lg transition-all duration-200 ${
               mode === m.id
                 ? 'bg-olive-500/20 border-2 border-olive-500'
-                : 'bg-zinc-100/80 dark:bg-zinc-800/80 border-2 border-transparent hover:border-zinc-300 dark:hover:border-zinc-600'
+                : 'bg-zinc-800/80 border-2 border-transparent hover:border-zinc-600'
             }`}
             whileTap={{ scale: 0.98 }}
           >
             <div className="flex items-center justify-between">
               <span className={`font-medium text-sm ${
                 mode === m.id
-                  ? 'text-olive-700 dark:text-olive-300'
-                  : 'text-zinc-700 dark:text-zinc-300'
+                  ? 'text-olive-300'
+                  : 'text-zinc-300'
               }`}>
                 {m.label}
               </span>
@@ -101,7 +101,7 @@ const CentralityComparison = ({
                 />
               )}
             </div>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+            <p className="text-xs text-zinc-400 mt-0.5">
               {m.description}
             </p>
           </motion.button>
@@ -110,21 +110,21 @@ const CentralityComparison = ({
 
       {/* Ranking comparison */}
       {nodes.length > 0 && (
-        <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-700">
-          <p className="text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2">
+        <div className="mt-3 pt-3 border-t border-zinc-700">
+          <p className="text-xs font-medium text-zinc-400 mb-2">
             Top node rankings:
           </p>
           <div className="grid grid-cols-3 gap-2 text-xs">
             {modes.map((m) => (
               <div key={m.id} className="text-center">
                 <p className={`font-medium mb-1 ${
-                  mode === m.id ? 'text-olive-600 dark:text-olive-400' : 'text-zinc-500'
+                  mode === m.id ? 'text-olive-400' : 'text-zinc-500'
                 }`}>
                   {m.label}
                 </p>
                 <div className="space-y-0.5">
                   {rankings[m.id].slice(0, 3).map((node, i) => (
-                    <p key={node.id} className="text-zinc-600 dark:text-zinc-400">
+                    <p key={node.id} className="text-zinc-400">
                       {i + 1}. {node.label}
                     </p>
                   ))}
@@ -134,7 +134,7 @@ const CentralityComparison = ({
           </div>
 
           {rankingsDiffer && (
-            <p className="text-xs text-olive-600 dark:text-olive-400 mt-3 text-center">
+            <p className="text-xs text-olive-400 mt-3 text-center">
               Rankings differ between metrics!
             </p>
           )}

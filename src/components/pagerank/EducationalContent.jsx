@@ -16,7 +16,7 @@ const EducationalContent = ({ expanded, onToggle }) => {
         onClick={onToggle}
         className="w-full flex items-center justify-between text-left"
       >
-        <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+        <h3 className="font-semibold text-zinc-100">
           How PageRank Works
         </h3>
         <motion.svg
@@ -41,26 +41,26 @@ const EducationalContent = ({ expanded, onToggle }) => {
           >
             <div className="mt-4 space-y-4">
               {/* Random Surfer */}
-              <div className="p-3 bg-olive-50 dark:bg-olive-900/20 rounded-lg border border-olive-200 dark:border-olive-800">
-                <h4 className="font-medium text-olive-800 dark:text-olive-300 mb-2 flex items-center gap-2">
+              <div className="p-3 bg-olive-900/20 rounded-lg border border-olive-800">
+                <h4 className="font-medium text-olive-300 mb-2 flex items-center gap-2">
                   <span className="text-lg">🏄</span> The Random Surfer Model
                 </h4>
-                <p className="text-sm text-olive-700 dark:text-olive-300">
+                <p className="text-sm text-olive-300">
                   Imagine a web surfer randomly clicking links. With probability <strong>α</strong> (damping factor),
                   they follow a random link on the current page. With probability <strong>1-α</strong>,
                   they get bored and jump to a completely random page.
                 </p>
-                <p className="text-sm text-olive-600 dark:text-olive-400 mt-2">
+                <p className="text-sm text-olive-400 mt-2">
                   PageRank is the fraction of time this surfer spends on each page in the long run.
                 </p>
               </div>
 
               {/* Damping Factor */}
-              <div className="p-3 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-lg">
-                <h4 className="font-medium text-zinc-800 dark:text-zinc-200 mb-2">
+              <div className="p-3 bg-zinc-800/80 rounded-lg">
+                <h4 className="font-medium text-zinc-200 mb-2">
                   Damping Factor (α = 0.85)
                 </h4>
-                <ul className="text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+                <ul className="text-sm text-zinc-400 space-y-1">
                   <li>• <strong>Higher α</strong> → More weight on link structure, slower convergence</li>
                   <li>• <strong>Lower α</strong> → More uniform distribution, faster convergence</li>
                   <li>• <strong>α = 0.85</strong> is the industry standard (used by Google)</li>
@@ -68,27 +68,27 @@ const EducationalContent = ({ expanded, onToggle }) => {
               </div>
 
               {/* Dangling Nodes */}
-              <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                <h4 className="font-medium text-yellow-800 dark:text-yellow-300 mb-2 flex items-center gap-2">
+              <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-800">
+                <h4 className="font-medium text-yellow-300 mb-2 flex items-center gap-2">
                   <span className="text-lg">⚠️</span> Dangling Nodes
                 </h4>
-                <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                <p className="text-sm text-yellow-300">
                   Nodes with no outgoing links (like dead-end pages). Without special handling,
                   probability would "leak" out of the system.
                 </p>
-                <p className="text-sm text-yellow-600 dark:text-yellow-400 mt-2">
+                <p className="text-sm text-yellow-400 mt-2">
                   Solution: Treat dangling nodes as linking to all pages equally.
                 </p>
               </div>
 
               {/* Power Iteration */}
-              <div className="p-3 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-lg">
-                <h4 className="font-medium text-zinc-800 dark:text-zinc-200 mb-2">
+              <div className="p-3 bg-zinc-800/80 rounded-lg">
+                <h4 className="font-medium text-zinc-200 mb-2">
                   Power Iteration Method
                 </h4>
-                <div className="text-sm text-zinc-600 dark:text-zinc-400 space-y-2">
+                <div className="text-sm text-zinc-400 space-y-2">
                   <p>The algorithm finds the steady-state distribution by repeatedly multiplying:</p>
-                  <p className="font-mono bg-zinc-200 dark:bg-zinc-700 px-2 py-1 rounded inline-block">
+                  <p className="font-mono bg-zinc-700 px-2 py-1 rounded inline-block">
                     r<sup>(k+1)</sup> = G × r<sup>(k)</sup>
                   </p>
                   <p>Until convergence (when values stop changing significantly).</p>
@@ -96,11 +96,11 @@ const EducationalContent = ({ expanded, onToggle }) => {
               </div>
 
               {/* Mathematical Foundation */}
-              <div className="p-3 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-lg">
-                <h4 className="font-medium text-zinc-800 dark:text-zinc-200 mb-2">
+              <div className="p-3 bg-zinc-800/80 rounded-lg">
+                <h4 className="font-medium text-zinc-200 mb-2">
                   Mathematical Foundation
                 </h4>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="text-sm text-zinc-400">
                   PageRank is the <strong>stationary distribution</strong> of a Markov chain.
                   The Perron-Frobenius theorem guarantees a unique positive solution because
                   the Google matrix G is column-stochastic, irreducible, and aperiodic.

@@ -34,21 +34,21 @@ const ControlPanel = ({
 }) => {
   return (
     <GlassCard className="p-4 h-full flex flex-col" animate={false}>
-      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+      <h3 className="font-semibold text-zinc-100 mb-4">
         Algorithm Controls
       </h3>
 
       {/* Status Display */}
-      <div className="mb-4 p-3 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-lg space-y-2">
+      <div className="mb-4 p-3 bg-zinc-800/80 rounded-lg space-y-2">
         <div className="flex justify-between items-center">
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">Iteration</span>
-          <span className="font-mono font-bold text-olive-600 dark:text-olive-400">
+          <span className="text-sm text-zinc-400">Iteration</span>
+          <span className="font-mono font-bold text-olive-400">
             {iteration}
           </span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">L1 Norm Δ</span>
-          <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">
+          <span className="text-sm text-zinc-400">L1 Norm Δ</span>
+          <span className="font-mono text-sm text-zinc-300">
             {convergenceDelta.toExponential(2)}
           </span>
         </div>
@@ -56,7 +56,7 @@ const ControlPanel = ({
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-center gap-2 text-sm text-green-600 dark:text-green-400 bg-green-100/50 dark:bg-green-900/30 rounded-md py-1"
+            className="flex items-center justify-center gap-2 text-sm text-green-400 bg-green-900/30 rounded-md py-1"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -68,8 +68,8 @@ const ControlPanel = ({
 
       {/* Damping Factor Slider */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-          Damping Factor (α): <span className="font-mono text-olive-600 dark:text-olive-400">{alpha.toFixed(2)}</span>
+        <label className="block text-sm font-medium text-zinc-300 mb-2">
+          Damping Factor (α): <span className="font-mono text-olive-400">{alpha.toFixed(2)}</span>
         </label>
         <input
           type="range"
@@ -78,21 +78,21 @@ const ControlPanel = ({
           step="0.01"
           value={alpha}
           onChange={(e) => onAlphaChange(parseFloat(e.target.value))}
-          className="w-full h-2 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-olive-500"
+          className="w-full h-2 bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-olive-500"
         />
-        <div className="flex justify-between text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+        <div className="flex justify-between text-xs text-zinc-400 mt-1">
           <span>0.50</span>
           <span className="text-olive-500">0.85</span>
           <span>0.99</span>
         </div>
-        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
+        <p className="text-xs text-zinc-400 mt-2">
           Higher α = more weight to link structure, slower convergence
         </p>
       </div>
 
       {/* Speed Control */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
+        <label className="block text-sm font-medium text-zinc-300 mb-2">
           Animation Speed
         </label>
         <div className="flex gap-2">
@@ -103,7 +103,7 @@ const ControlPanel = ({
               className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                 speed === s
                   ? 'bg-olive-500 text-white shadow-md'
-                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
             >
               {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -122,7 +122,7 @@ const ControlPanel = ({
           disabled={isConverged}
           className={`flex-1 py-2.5 px-4 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 ${
             isConverged
-              ? 'bg-zinc-200 dark:bg-zinc-700 text-zinc-400 cursor-not-allowed'
+              ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
               : 'bg-olive-500 hover:bg-olive-600 text-white shadow-md hover:shadow-lg'
           }`}
           whileTap={!isConverged ? { scale: 0.95 } : {}}
@@ -149,8 +149,8 @@ const ControlPanel = ({
           disabled={isRunning || isConverged}
           className={`py-2.5 px-4 rounded-lg font-medium transition-all duration-200 ${
             isRunning || isConverged
-              ? 'bg-zinc-200 dark:bg-zinc-700 text-zinc-400 cursor-not-allowed'
-              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-300 dark:border-zinc-600'
+              ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
+              : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border border-zinc-600'
           }`}
           whileTap={!(isRunning || isConverged) ? { scale: 0.95 } : {}}
         >
@@ -159,7 +159,7 @@ const ControlPanel = ({
 
         <motion.button
           onClick={onReset}
-          className="py-2.5 px-4 rounded-lg font-medium transition-all duration-200 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-300 dark:border-zinc-600"
+          className="py-2.5 px-4 rounded-lg font-medium transition-all duration-200 bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border border-zinc-600"
           whileTap={{ scale: 0.95 }}
         >
           Reset
