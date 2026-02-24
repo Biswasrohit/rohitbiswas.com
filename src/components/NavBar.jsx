@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ThemeToggle from './ui/ThemeToggle';
+
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,14 +92,10 @@ const NavBar = () => {
                 {item.label}
               </button>
             ))}
-            <div className="ml-3 pl-3 border-l border-white/8">
-              <ThemeToggle />
-            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-3">
-            <ThemeToggle />
             <motion.button
               onClick={() => setMenuOpen(!menuOpen)}
               className="p-2 rounded-md text-white/50 hover:text-white/80 transition-colors duration-200"
