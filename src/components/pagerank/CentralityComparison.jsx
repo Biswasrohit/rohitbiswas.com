@@ -68,7 +68,7 @@ const CentralityComparison = ({
 
   return (
     <GlassCard className="p-4" animate={false}>
-      <h3 className="font-semibold text-white/85 mb-3">
+      <h3 className="font-semibold font-display text-white/85 mb-3">
         Centrality Comparison
       </h3>
 

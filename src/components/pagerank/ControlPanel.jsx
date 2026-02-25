@@ -34,7 +34,7 @@ const ControlPanel = ({
 }) => {
   return (
     <GlassCard className="p-4 h-full flex flex-col" animate={false}>
-      <h3 className="font-semibold text-white/85 mb-4">
+      <h3 className="font-semibold font-display text-white/85 mb-4">
         Algorithm Controls
       </h3>
 

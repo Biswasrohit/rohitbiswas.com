@@ -140,7 +140,7 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h1 className="text-3xl font-bold text-white/85">
+          <h1 className="text-3xl font-bold font-display text-white/85" style={{ letterSpacing: '-0.03em' }}>
             PageRank Algorithm Visualizer
           </h1>
           <p className="text-white/50 mt-2 max-w-2xl mx-auto">

@@ -14,7 +14,7 @@ const PresetGraphs = ({ selectedPreset, onSelect, onClear }) => {
   return (
     <GlassCard className="p-4" animate={false}>
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-semibold text-white/85">
+        <h3 className="font-semibold font-display text-white/85">
           Example Graphs
         </h3>
         <p className="text-xs text-white/50">

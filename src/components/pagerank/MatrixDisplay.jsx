@@ -36,7 +36,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
         onClick={onToggle}
         className="w-full flex items-center justify-between text-left"
       >
-        <h3 className="font-semibold text-white/85">
+        <h3 className="font-semibold font-display text-white/85">
           Google Matrix (G)
         </h3>
         <motion.svg

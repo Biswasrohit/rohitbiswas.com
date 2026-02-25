@@ -31,7 +31,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
   if (nodes.length === 0) {
     return (
       <GlassCard className="p-4" animate={false}>
-        <h3 className="font-semibold text-white/85 mb-3">
+        <h3 className="font-semibold font-display text-white/85 mb-3">
           PageRank Values
         </h3>
         <p className="text-sm text-white/50 text-center py-4">
@@ -43,7 +43,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
 
   return (
     <GlassCard className="p-4" animate={false}>
-      <h3 className="font-semibold text-white/85 mb-3">
+      <h3 className="font-semibold font-display text-white/85 mb-3">
         PageRank Values
       </h3>
 
