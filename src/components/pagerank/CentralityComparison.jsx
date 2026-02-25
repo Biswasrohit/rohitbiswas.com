@@ -80,7 +80,7 @@ const CentralityComparison = ({
             onClick={() => onModeChange(m.id)}
             className={`w-full text-left p-2 rounded-lg transition-all duration-200 ${
               mode === m.id
-                ? 'bg-olive-500/20 border-2 border-olive-500'
+                ? 'bg-arc-cyan/15 border-2 border-arc-cyan'
                 : 'bg-surface-2/80 border-2 border-transparent hover:border-border-default'
             }`}
             whileTap={{ scale: 0.98 }}
@@ -88,7 +88,7 @@ const CentralityComparison = ({
             <div className="flex items-center justify-between">
               <span className={`font-medium text-sm ${
                 mode === m.id
-                  ? 'text-olive-300'
+                  ? 'text-arc-cyan'
                   : 'text-white/70'
               }`}>
                 {m.label}
@@ -97,7 +97,7 @@ const CentralityComparison = ({
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="w-2 h-2 rounded-full bg-olive-500"
+                  className="w-2 h-2 rounded-full bg-arc-cyan"
                 />
               )}
             </div>
@@ -118,7 +118,7 @@ const CentralityComparison = ({
             {modes.map((m) => (
               <div key={m.id} className="text-center">
                 <p className={`font-medium mb-1 ${
-                  mode === m.id ? 'text-olive-400' : 'text-white/35'
+                  mode === m.id ? 'text-arc-cyan' : 'text-white/35'
                 }`}>
                   {m.label}
                 </p>
@@ -134,7 +134,7 @@ const CentralityComparison = ({
           </div>
 
           {rankingsDiffer && (
-            <p className="text-xs text-olive-400 mt-3 text-center">
+            <p className="text-xs text-arc-cyan mt-3 text-center">
               Rankings differ between metrics!
             </p>
           )}

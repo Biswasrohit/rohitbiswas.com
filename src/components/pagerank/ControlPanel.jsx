@@ -42,7 +42,7 @@ const ControlPanel = ({
       <div className="mb-4 p-3 bg-surface-2/80 rounded-lg space-y-2">
         <div className="flex justify-between items-center">
           <span className="text-sm text-white/50">Iteration</span>
-          <span className="font-mono font-bold text-olive-400">
+          <span className="font-mono font-bold text-arc-cyan">
             {iteration}
           </span>
         </div>
@@ -69,7 +69,7 @@ const ControlPanel = ({
       {/* Damping Factor Slider */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-white/70 mb-2">
-          Damping Factor (α): <span className="font-mono text-olive-400">{alpha.toFixed(2)}</span>
+          Damping Factor (α): <span className="font-mono text-arc-cyan">{alpha.toFixed(2)}</span>
         </label>
         <input
           type="range"
@@ -78,11 +78,11 @@ const ControlPanel = ({
           step="0.01"
           value={alpha}
           onChange={(e) => onAlphaChange(parseFloat(e.target.value))}
-          className="w-full h-2 bg-surface-3 rounded-lg appearance-none cursor-pointer accent-olive-500"
+          className="w-full h-2 bg-surface-3 rounded-lg appearance-none cursor-pointer accent-[#38bdf8]"
         />
         <div className="flex justify-between text-xs text-white/50 mt-1">
           <span>0.50</span>
-          <span className="text-olive-500">0.85</span>
+          <span className="text-arc-cyan">0.85</span>
           <span>0.99</span>
         </div>
         <p className="text-xs text-white/50 mt-2">
@@ -102,7 +102,7 @@ const ControlPanel = ({
               onClick={() => onSpeedChange(s)}
               className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                 speed === s
-                  ? 'bg-olive-500 text-white shadow-md'
+                  ? 'bg-arc-cyan/15 text-white shadow-md'
                   : 'bg-surface-2 text-white/50 hover:bg-surface-3'
               }`}
             >
@@ -123,7 +123,7 @@ const ControlPanel = ({
           className={`flex-1 py-2.5 px-4 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 ${
             isConverged
               ? 'bg-surface-3 text-white/50 cursor-not-allowed'
-              : 'bg-olive-500 hover:bg-olive-600 text-white shadow-md hover:shadow-lg'
+              : 'bg-arc-cyan/15 hover:bg-arc-cyan/25 text-white shadow-md hover:shadow-lg'
           }`}
           whileTap={!isConverged ? { scale: 0.95 } : {}}
         >

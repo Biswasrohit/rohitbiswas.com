@@ -29,8 +29,8 @@ const PresetGraphs = ({ selectedPreset, onSelect, onClear }) => {
             onClick={() => onSelect(preset.id)}
             className={`text-left p-3 rounded-lg transition-all duration-200 ${
               selectedPreset === preset.id
-                ? 'bg-olive-500/20 border-2 border-olive-500 text-olive-300'
-                : 'bg-surface-2/80 border-2 border-transparent hover:border-olive-700 text-white/70'
+                ? 'bg-arc-cyan/15 border-2 border-arc-cyan text-white'
+                : 'bg-surface-2/80 border-2 border-transparent hover:border-arc-cyan/50 text-white/70'
             }`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

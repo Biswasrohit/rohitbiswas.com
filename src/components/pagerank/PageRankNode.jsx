@@ -19,7 +19,7 @@ const PageRankNode = memo(({ data, selected }) => {
   // Highlight dangling nodes with a different border style
   const borderStyle = isDangling
     ? '3px dashed rgb(234 179 8)'
-    : '3px solid rgb(107 142 35)';
+    : '3px solid rgb(56 189 248)';
 
   return (
     <div
@@ -34,13 +34,13 @@ const PageRankNode = memo(({ data, selected }) => {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
+        className="!w-2.5 !h-2.5 !bg-arc-cyan !border-2 !border-surface-2"
         id="target-top"
       />
       <Handle
         type="target"
         position={Position.Left}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
+        className="!w-2.5 !h-2.5 !bg-arc-cyan !border-2 !border-surface-2"
         id="target-left"
       />
 
@@ -49,12 +49,12 @@ const PageRankNode = memo(({ data, selected }) => {
         className={`
           rounded-full flex flex-col items-center justify-center
           shadow-lg cursor-pointer
-          ${selected ? 'ring-4 ring-olive-400 ring-offset-2 ring-offset-surface-1' : ''}
+          ${selected ? 'ring-4 ring-arc-cyan/50 ring-offset-2 ring-offset-surface-1' : ''}
         `}
         style={{
           width: '100%',
           height: '100%',
-          backgroundColor: `rgba(107, 142, 35, ${opacity})`,
+          backgroundColor: `rgba(56, 189, 248, ${opacity})`,
           border: borderStyle,
           transition: 'background-color 0.4s ease, border 0.3s ease',
         }}
@@ -71,13 +71,13 @@ const PageRankNode = memo(({ data, selected }) => {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
+        className="!w-2.5 !h-2.5 !bg-arc-cyan !border-2 !border-surface-2"
         id="source-bottom"
       />
       <Handle
         type="source"
         position={Position.Right}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
+        className="!w-2.5 !h-2.5 !bg-arc-cyan !border-2 !border-surface-2"
         id="source-right"
       />
 

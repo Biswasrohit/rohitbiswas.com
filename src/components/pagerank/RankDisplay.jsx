@@ -62,7 +62,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
               {/* Rank bar background */}
               <div className="absolute inset-0 rounded-md overflow-hidden">
                 <motion.div
-                  className="h-full bg-olive-500/20"
+                  className="h-full bg-arc-cyan/20"
                   initial={{ width: 0 }}
                   animate={{ width: `${(node.rank / maxRank) * 100}%` }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -73,7 +73,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
               <div className="relative flex items-center justify-between p-2 rounded-md">
                 <div className="flex items-center gap-2">
                   {/* Rank position */}
-                  <span className="w-5 h-5 flex items-center justify-center text-xs font-bold text-olive-400 bg-olive-900/50 rounded-full">
+                  <span className="w-5 h-5 flex items-center justify-center text-xs font-bold text-arc-cyan bg-arc-cyan/15 rounded-full">
                     {index + 1}
                   </span>
 

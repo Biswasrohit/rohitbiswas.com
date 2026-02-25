@@ -26,12 +26,12 @@ const defaultEdgeOptions = {
   type: 'default',
   markerEnd: {
     type: MarkerType.ArrowClosed,
-    color: '#6B8E23',
+    color: '#38bdf8',
     width: 20,
     height: 20,
   },
   style: {
-    stroke: '#6B8E23',
+    stroke: '#38bdf8',
     strokeWidth: 2,
   },
   animated: false,
@@ -185,7 +185,7 @@ const GraphCanvas = ({
         className="bg-surface-1/50 rounded-xl"
       >
         <Background
-          color="#6B8E23"
+          color="#38bdf8"
           variant="dots"
           gap={20}
           size={1}
@@ -201,9 +201,9 @@ const GraphCanvas = ({
           nodeColor={(node) => {
             const rank = node.data?.normalizedRank || 0;
             const opacity = 0.4 + rank * 0.6;
-            return `rgba(107, 142, 35, ${opacity})`;
+            return `rgba(56, 189, 248, ${opacity})`;
           }}
-          maskColor="rgba(107, 142, 35, 0.1)"
+          maskColor="rgba(56, 189, 248, 0.1)"
           className="!bg-surface-2/80 !border-border-default !rounded-lg"
           pannable
           zoomable

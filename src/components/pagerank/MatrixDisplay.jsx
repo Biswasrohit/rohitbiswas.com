@@ -26,7 +26,7 @@ const MatrixDisplay = ({ nodes, edges, alpha, expanded, onToggle }) => {
   const getCellColor = (value) => {
     if (value === 0) return 'bg-surface-2';
     const intensity = Math.min(value * 2, 1); // Scale for visibility
-    return `bg-olive-500/${Math.round(intensity * 60 + 10)}`;
+    return `bg-arc-cyan/${Math.round(intensity * 60 + 10)}`;
   };
 
   return (

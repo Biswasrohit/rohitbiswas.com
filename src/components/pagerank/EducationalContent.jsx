@@ -41,16 +41,16 @@ const EducationalContent = ({ expanded, onToggle }) => {
           >
             <div className="mt-4 space-y-4">
               {/* Random Surfer */}
-              <div className="p-3 bg-olive-900/20 rounded-lg border border-olive-800">
-                <h4 className="font-medium text-olive-300 mb-2 flex items-center gap-2">
+              <div className="p-3 bg-arc-cyan/10 rounded-lg border border-arc-cyan/30">
+                <h4 className="font-medium text-arc-cyan mb-2 flex items-center gap-2">
                   <span className="text-lg">🏄</span> The Random Surfer Model
                 </h4>
-                <p className="text-sm text-olive-300">
+                <p className="text-sm text-arc-cyan">
                   Imagine a web surfer randomly clicking links. With probability <strong>α</strong> (damping factor),
                   they follow a random link on the current page. With probability <strong>1-α</strong>,
                   they get bored and jump to a completely random page.
                 </p>
-                <p className="text-sm text-olive-400 mt-2">
+                <p className="text-sm text-white/50 mt-2">
                   PageRank is the fraction of time this surfer spends on each page in the long run.
                 </p>
               </div>
