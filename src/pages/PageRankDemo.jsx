@@ -2,13 +2,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageRankVisualization from '../components/pagerank/PageRankVisualization';
 import GlassCard from '../components/ui/GlassCard';
-import { useTheme } from '../hooks/useTheme';
 
 /**
  * PageRankDemo page - Full-page demo with navigation, PDF download, and explanation
  */
 const PageRankDemo = () => {
-  const { theme, toggleTheme, isDark } = useTheme();
 
   return (
     <div className="min-h-screen bg-void">
