@@ -182,7 +182,7 @@ const GraphCanvas = ({
         minZoom={0.3}
         maxZoom={2}
         deleteKeyCode={['Backspace', 'Delete']}
-        className="bg-zinc-900/50 rounded-xl"
+        className="bg-surface-1/50 rounded-xl"
       >
         <Background
           color="#6B8E23"
@@ -192,7 +192,7 @@ const GraphCanvas = ({
           className="opacity-30"
         />
         <Controls
-          className="!bg-zinc-800/80 !border-zinc-700 !rounded-lg !shadow-lg"
+          className="!bg-surface-2/80 !border-border-default !rounded-lg !shadow-lg"
           showZoom={true}
           showFitView={true}
           showInteractive={false}
@@ -204,7 +204,7 @@ const GraphCanvas = ({
             return `rgba(107, 142, 35, ${opacity})`;
           }}
           maskColor="rgba(107, 142, 35, 0.1)"
-          className="!bg-zinc-800/80 !border-zinc-700 !rounded-lg"
+          className="!bg-surface-2/80 !border-border-default !rounded-lg"
           pannable
           zoomable
         />
@@ -213,7 +213,7 @@ const GraphCanvas = ({
       {/* Instructions overlay */}
       {nodes.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="text-center text-zinc-400">
+          <div className="text-center text-white/50">
             <p className="text-lg font-medium mb-2">Click anywhere to add nodes</p>
             <p className="text-sm">Drag from node handles to create edges</p>
           </div>

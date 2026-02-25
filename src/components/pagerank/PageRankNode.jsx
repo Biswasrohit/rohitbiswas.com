@@ -34,13 +34,13 @@ const PageRankNode = memo(({ data, selected }) => {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
         id="target-top"
       />
       <Handle
         type="target"
         position={Position.Left}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
         id="target-left"
       />
 
@@ -49,7 +49,7 @@ const PageRankNode = memo(({ data, selected }) => {
         className={`
           rounded-full flex flex-col items-center justify-center
           shadow-lg cursor-pointer
-          ${selected ? 'ring-4 ring-olive-400 ring-offset-2 ring-offset-zinc-900' : ''}
+          ${selected ? 'ring-4 ring-olive-400 ring-offset-2 ring-offset-surface-1' : ''}
         `}
         style={{
           width: '100%',
@@ -71,13 +71,13 @@ const PageRankNode = memo(({ data, selected }) => {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
         id="source-bottom"
       />
       <Handle
         type="source"
         position={Position.Right}
-        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-zinc-800"
+        className="!w-2.5 !h-2.5 !bg-olive-600 !border-2 !border-surface-2"
         id="source-right"
       />
 

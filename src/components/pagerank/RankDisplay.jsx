@@ -31,10 +31,10 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
   if (nodes.length === 0) {
     return (
       <GlassCard className="p-4" animate={false}>
-        <h3 className="font-semibold text-zinc-100 mb-3">
+        <h3 className="font-semibold text-white/85 mb-3">
           PageRank Values
         </h3>
-        <p className="text-sm text-zinc-400 text-center py-4">
+        <p className="text-sm text-white/50 text-center py-4">
           Add nodes to see rankings
         </p>
       </GlassCard>
@@ -43,7 +43,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
 
   return (
     <GlassCard className="p-4" animate={false}>
-      <h3 className="font-semibold text-zinc-100 mb-3">
+      <h3 className="font-semibold text-white/85 mb-3">
         PageRank Values
       </h3>
 
@@ -78,7 +78,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
                   </span>
 
                   {/* Node label */}
-                  <span className="font-medium text-zinc-200">
+                  <span className="font-medium text-white/80">
                     {node.label}
                   </span>
 
@@ -91,7 +91,7 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
                 </div>
 
                 {/* Rank value */}
-                <span className="font-mono text-sm text-zinc-300">
+                <span className="font-mono text-sm text-white/70">
                   {node.rank.toFixed(4)}
                 </span>
               </div>
@@ -101,10 +101,10 @@ const RankDisplay = ({ nodes, ranks, danglingNodes = [] }) => {
       </div>
 
       {/* Sum verification */}
-      <div className="mt-3 pt-3 border-t border-zinc-700">
+      <div className="mt-3 pt-3 border-t border-border-default">
         <div className="flex justify-between text-sm">
-          <span className="text-zinc-400">Sum</span>
-          <span className="font-mono text-zinc-300">
+          <span className="text-white/50">Sum</span>
+          <span className="font-mono text-white/70">
             {Array.from(ranks.values()).reduce((a, b) => a + b, 0).toFixed(4)}
           </span>
         </div>

@@ -11,14 +11,14 @@ const PageRankDemo = () => {
   const { theme, toggleTheme, isDark } = useTheme();
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-void">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass-nav border-b border-zinc-800/50">
+      <nav className="sticky top-0 z-50 glass-nav border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           {/* Back to portfolio */}
           <Link
             to="/"
-            className="flex items-center gap-2 text-zinc-400 hover:text-olive-400 transition-colors"
+            className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -32,7 +32,7 @@ const PageRankDemo = () => {
             <a
               href="/assets/PageRank_MarkovChains_RohitBiswas.pdf"
               download
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-3 text-white/70 hover:bg-surface-3/80 transition-colors border border-border-subtle"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -67,24 +67,24 @@ const PageRankDemo = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4">
+            <h2 className="text-2xl font-bold text-white/85 mb-4">
               What is PageRank?
             </h2>
 
             <div className="prose prose-invert max-w-none space-y-4">
-              <p className="text-zinc-400">
+              <p className="text-white/50">
                 PageRank is the algorithm that revolutionized web search. Developed by Larry Page and
                 Sergey Brin at Stanford in 1996, it was the foundation of Google's search engine and
                 fundamentally changed how we find information online.
               </p>
 
-              <p className="text-zinc-400">
-                The key insight is elegantly simple: <strong className="text-zinc-200">a page is important if important pages link to it</strong>.
+              <p className="text-white/50">
+                The key insight is elegantly simple: <strong className="text-white/80">a page is important if important pages link to it</strong>.
                 This circular definition is solved using linear algebra—specifically, finding the
                 stationary distribution of a Markov chain represented by the web's link structure.
               </p>
 
-              <p className="text-zinc-400">
+              <p className="text-white/50">
                 The "random surfer" model provides intuition: imagine someone randomly clicking links
                 on the web. The PageRank of a page is the probability of finding this surfer on that
                 page at any given time. The damping factor (α = 0.85) accounts for the surfer occasionally
@@ -104,13 +104,13 @@ const PageRankDemo = () => {
             </div>
 
             {/* PDF Preview */}
-            <div className="mt-8 rounded-xl overflow-hidden border border-zinc-700 bg-zinc-800">
+            <div className="mt-8 rounded-xl overflow-hidden border border-border-default bg-surface-2">
               <object
                 data="/assets/PageRank_MarkovChains_RohitBiswas.pdf"
                 type="application/pdf"
                 className="w-full h-125"
               >
-                <div className="flex items-center justify-center h-50 text-zinc-400 text-sm">
+                <div className="flex items-center justify-center h-50 text-white/50 text-sm">
                   <p>PDF preview not available in your browser.
                     <a href="/assets/PageRank_MarkovChains_RohitBiswas.pdf" download className="text-olive-500 hover:underline ml-1">Download instead</a>
                   </p>
@@ -132,7 +132,7 @@ const PageRankDemo = () => {
 
               <Link
                 to="/#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-zinc-700 text-zinc-300 hover:border-olive-500 hover:text-olive-500 transition-colors font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-border-default text-white/70 hover:border-olive-500 hover:text-olive-500 transition-colors font-medium"
               >
                 View More Projects
               </Link>
@@ -142,8 +142,8 @@ const PageRankDemo = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-800 py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center text-sm text-zinc-400">
+      <footer className="border-t border-border-subtle py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center text-sm text-white/50">
           <p>Built with React, React Flow, and Framer Motion</p>
           <p className="mt-1">
             © {new Date().getFullYear()} Rohit Biswas •

@@ -16,12 +16,12 @@ const EducationalContent = ({ expanded, onToggle }) => {
         onClick={onToggle}
         className="w-full flex items-center justify-between text-left"
       >
-        <h3 className="font-semibold text-zinc-100">
+        <h3 className="font-semibold text-white/85">
           How PageRank Works
         </h3>
         <motion.svg
           animate={{ rotate: expanded ? 180 : 0 }}
-          className="w-5 h-5 text-zinc-500"
+          className="w-5 h-5 text-white/35"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -56,11 +56,11 @@ const EducationalContent = ({ expanded, onToggle }) => {
               </div>
 
               {/* Damping Factor */}
-              <div className="p-3 bg-zinc-800/80 rounded-lg">
-                <h4 className="font-medium text-zinc-200 mb-2">
+              <div className="p-3 bg-surface-2/80 rounded-lg">
+                <h4 className="font-medium text-white/80 mb-2">
                   Damping Factor (α = 0.85)
                 </h4>
-                <ul className="text-sm text-zinc-400 space-y-1">
+                <ul className="text-sm text-white/50 space-y-1">
                   <li>• <strong>Higher α</strong> → More weight on link structure, slower convergence</li>
                   <li>• <strong>Lower α</strong> → More uniform distribution, faster convergence</li>
                   <li>• <strong>α = 0.85</strong> is the industry standard (used by Google)</li>
@@ -82,13 +82,13 @@ const EducationalContent = ({ expanded, onToggle }) => {
               </div>
 
               {/* Power Iteration */}
-              <div className="p-3 bg-zinc-800/80 rounded-lg">
-                <h4 className="font-medium text-zinc-200 mb-2">
+              <div className="p-3 bg-surface-2/80 rounded-lg">
+                <h4 className="font-medium text-white/80 mb-2">
                   Power Iteration Method
                 </h4>
-                <div className="text-sm text-zinc-400 space-y-2">
+                <div className="text-sm text-white/50 space-y-2">
                   <p>The algorithm finds the steady-state distribution by repeatedly multiplying:</p>
-                  <p className="font-mono bg-zinc-700 px-2 py-1 rounded inline-block">
+                  <p className="font-mono bg-surface-3 px-2 py-1 rounded inline-block">
                     r<sup>(k+1)</sup> = G × r<sup>(k)</sup>
                   </p>
                   <p>Until convergence (when values stop changing significantly).</p>
@@ -96,11 +96,11 @@ const EducationalContent = ({ expanded, onToggle }) => {
               </div>
 
               {/* Mathematical Foundation */}
-              <div className="p-3 bg-zinc-800/80 rounded-lg">
-                <h4 className="font-medium text-zinc-200 mb-2">
+              <div className="p-3 bg-surface-2/80 rounded-lg">
+                <h4 className="font-medium text-white/80 mb-2">
                   Mathematical Foundation
                 </h4>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-white/50">
                   PageRank is the <strong>stationary distribution</strong> of a Markov chain.
                   The Perron-Frobenius theorem guarantees a unique positive solution because
                   the Google matrix G is column-stochastic, irreducible, and aperiodic.

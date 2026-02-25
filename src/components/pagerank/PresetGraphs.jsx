@@ -14,10 +14,10 @@ const PresetGraphs = ({ selectedPreset, onSelect, onClear }) => {
   return (
     <GlassCard className="p-4" animate={false}>
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-semibold text-zinc-100">
+        <h3 className="font-semibold text-white/85">
           Example Graphs
         </h3>
-        <p className="text-xs text-zinc-400">
+        <p className="text-xs text-white/50">
           Click canvas to add nodes, drag handles to create edges
         </p>
       </div>
@@ -30,13 +30,13 @@ const PresetGraphs = ({ selectedPreset, onSelect, onClear }) => {
             className={`text-left p-3 rounded-lg transition-all duration-200 ${
               selectedPreset === preset.id
                 ? 'bg-olive-500/20 border-2 border-olive-500 text-olive-300'
-                : 'bg-zinc-800/80 border-2 border-transparent hover:border-olive-700 text-zinc-300'
+                : 'bg-surface-2/80 border-2 border-transparent hover:border-olive-700 text-white/70'
             }`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <div className="font-medium text-sm">{preset.name}</div>
-            <div className="text-xs text-zinc-400 mt-0.5 line-clamp-2">
+            <div className="text-xs text-white/50 mt-0.5 line-clamp-2">
               {preset.description}
             </div>
           </motion.button>
@@ -45,7 +45,7 @@ const PresetGraphs = ({ selectedPreset, onSelect, onClear }) => {
         {/* Clear button */}
         <motion.button
           onClick={onClear}
-          className="p-3 rounded-lg transition-all duration-200 bg-zinc-800/80 border-2 border-dashed border-zinc-600 hover:border-zinc-500 text-zinc-400"
+          className="p-3 rounded-lg transition-all duration-200 bg-surface-2/80 border-2 border-dashed border-border-default hover:border-border-bright text-white/50"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

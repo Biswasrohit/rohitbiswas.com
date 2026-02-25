@@ -132,7 +132,7 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
   }, []);
 
   return (
-    <div className={`${embedded ? '' : 'min-h-screen'} bg-zinc-950`}>
+    <div className={`${embedded ? '' : 'min-h-screen'} bg-void`}>
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <motion.div
@@ -140,10 +140,10 @@ const PageRankVisualizationInner = ({ embedded = false }) => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h1 className="text-3xl font-bold text-zinc-100">
+          <h1 className="text-3xl font-bold text-white/85">
             PageRank Algorithm Visualizer
           </h1>
-          <p className="text-zinc-400 mt-2 max-w-2xl mx-auto">
+          <p className="text-white/50 mt-2 max-w-2xl mx-auto">
             Explore how Google's foundational algorithm ranks web pages using Markov chains and power iteration
           </p>
         </motion.div>
