@@ -25,6 +25,3 @@ export const skillCategories = [
   },
 ];
 
-export const getAllSkills = () => {
-  return skillCategories.flatMap(category => category.skills);
-};

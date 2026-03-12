@@ -278,5 +278,3 @@ export function usePageRank(nodes, edges) {
     setSpeed: updateSpeed,
   };
 }
-
-export default usePageRank;

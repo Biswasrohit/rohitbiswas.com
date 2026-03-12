@@ -106,22 +106,3 @@ export const presetGraphs = {
  */
 export const presetList = Object.values(presetGraphs);
 
-/**
- * Get a preset graph by ID
- * @param {string} presetId - The preset identifier
- * @returns {Object|null} - The preset graph or null if not found
- */
-export function getPresetGraph(presetId) {
-  return presetGraphs[presetId] || null;
-}
-
-/**
- * Create an empty graph for custom editing
- */
-export const emptyGraph = {
-  id: 'empty',
-  name: 'Custom',
-  description: 'Start with a blank canvas and create your own graph.',
-  nodes: [],
-  edges: [],
-};

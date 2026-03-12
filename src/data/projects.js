@@ -153,7 +153,3 @@ export const filterProjects = (projects, categoryId) => {
   return projects.filter((project) => project.categories.includes(categoryId));
 };
 
-export const getAllTags = (projects) => {
-  const tags = projects.flatMap((project) => project.tags);
-  return [...new Set(tags)];
-};

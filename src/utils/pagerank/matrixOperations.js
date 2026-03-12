@@ -11,7 +11,7 @@
  * @param {Object} graph - { nodes, edges }
  * @returns {Object} - { matrix, nodeIds, nodeIndex }
  */
-export function buildHyperlinkMatrix(graph) {
+function buildHyperlinkMatrix(graph) {
   const n = graph.nodes.length;
   if (n === 0) return { matrix: [], nodeIds: [], nodeIndex: new Map() };
 
@@ -50,7 +50,7 @@ export function buildHyperlinkMatrix(graph) {
  * @param {number[][]} H - Original hyperlink matrix
  * @returns {number[][]} - Corrected matrix H'
  */
-export function buildCorrectedMatrix(H) {
+function buildCorrectedMatrix(H) {
   const n = H.length;
   if (n === 0) return [];
 
@@ -82,7 +82,7 @@ export function buildCorrectedMatrix(H) {
  * @param {number} alpha - Damping factor
  * @returns {number[][]} - Google matrix G
  */
-export function buildGoogleMatrix(HPrime, alpha = 0.85) {
+function buildGoogleMatrix(HPrime, alpha = 0.85) {
   const n = HPrime.length;
   if (n === 0) return [];
 
@@ -121,43 +121,3 @@ export function formatMatrixValue(value, decimals = 3) {
   return value.toFixed(decimals);
 }
 
-/**
- * Check if a matrix is column-stochastic (columns sum to 1)
- * @param {number[][]} matrix - Matrix to check
- * @param {number} tolerance - Tolerance for floating point comparison
- * @returns {boolean}
- */
-export function isColumnStochastic(matrix, tolerance = 1e-10) {
-  const n = matrix.length;
-  if (n === 0) return true;
-
-  for (let j = 0; j < n; j++) {
-    let colSum = 0;
-    for (let i = 0; i < n; i++) {
-      colSum += matrix[i][j];
-    }
-    if (Math.abs(colSum - 1) > tolerance) {
-      return false;
-    }
-  }
-  return true;
-}
-
-/**
- * Multiply a matrix by a vector (for verification)
- * @param {number[][]} matrix - n x n matrix
- * @param {number[]} vector - n-dimensional vector
- * @returns {number[]} - Result vector
- */
-export function matrixVectorMultiply(matrix, vector) {
-  const n = matrix.length;
-  const result = Array(n).fill(0);
-
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      result[i] += matrix[i][j] * vector[j];
-    }
-  }
-
-  return result;
-}
